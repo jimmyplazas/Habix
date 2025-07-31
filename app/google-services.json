@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "931609531984",
+    "project_id": "habix-33b5f",
+    "storage_bucket": "habix-33b5f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931609531984:android:22460d2dbd7376e195a355",
+        "android_client_info": {
+          "package_name": "dev.alejo.habix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgX9bU1CalcVdS0kiRm0L7aJGbzVsRbks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
