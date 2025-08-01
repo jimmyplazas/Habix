@@ -4,7 +4,9 @@ import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed interface NavigationScreens: NavKey {
+sealed class NavigationScreens: NavKey {
     @Serializable
-    data object Onboarding : NavigationScreens
+    data object Onboarding : NavigationScreens()
+    @Serializable
+    data object Login : NavigationScreens()
 }
