@@ -1,15 +1,25 @@
 package dev.alejo.habix.onboarding.presentation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import dev.alejo.habix.R
 import dev.alejo.habix.onboarding.presentation.components.OnboardingPager
 
 @Composable
 fun OnboardingScreen(
     modifier: Modifier = Modifier,
+    viewModel: OnboardingViewModel = hiltViewModel(),
     onFinish: () -> Unit
 ) {
+
+    LaunchedEffect(viewModel.hasSeenOnboarding) {
+        if (viewModel.hasSeenOnboarding) {
+            onFinish()
+        }
+    }
+
     val pages = listOf(
         OnboardingPagerInformation(
             title = "Welcome to monumental habits",
@@ -34,7 +44,7 @@ fun OnboardingScreen(
     )
     OnboardingPager(
         pages = pages,
-        onFinish = onFinish,
+        onFinish = { viewModel.completeOnboarding() },
         modifier = modifier
     )
 }
