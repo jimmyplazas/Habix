@@ -6,10 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,18 +17,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import dev.alejo.habix.authentication.core.presentation.AuthTextFields
 import dev.alejo.habix.core.presentation.HabixButton
-import dev.alejo.habix.core.presentation.HabixPasswordTextField
-import dev.alejo.habix.core.presentation.HabixTextField
 import dev.alejo.habix.ui.theme.AppDimens
 
 @Composable
-fun LoginForm(modifier: Modifier = Modifier) {
+fun LoginForm(
+    modifier: Modifier = Modifier,
+    onLoginClick: () -> Unit = {},
+    onSignUpClick: () -> Unit = {}
+) {
     Column(
         modifier = modifier.background(
             color = Color.White,
@@ -53,7 +50,7 @@ fun LoginForm(modifier: Modifier = Modifier) {
             color = MaterialTheme.colorScheme.background
         )
 
-        LoginInputs()
+        AuthTextFields()
 
         HabixButton(
             text = "Login",
@@ -61,64 +58,15 @@ fun LoginForm(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .padding(horizontal = AppDimens.Default),
             isEnabled = true
-        ) {
+        ) { onLoginClick() }
 
-        }
-
-        LoginOptions()
+        LoginOptions { onSignUpClick() }
 
     }
 }
 
 @Composable
-fun LoginInputs() {
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        HabixTextField(
-            value = "Email",
-            onValueChange = {},
-            placeholder = "Email",
-            contentDescription = "Enter email",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = AppDimens.Tiny)
-                .padding(horizontal = AppDimens.Default),
-            leadingIcon = Icons.Outlined.Email,
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Email,
-                imeAction = ImeAction.Next
-            ),
-            keyboardActions = KeyboardActions(onAny = {
-
-            }),
-            errorMessage = null
-        )
-
-        HabixPasswordTextField(
-            value = "Password",
-            onValueChange = {},
-            placeholder = "Password",
-            contentDescription = "Enter Password",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = AppDimens.Tiny)
-                .padding(horizontal = AppDimens.Default),
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Password,
-                imeAction = ImeAction.Done
-            ),
-            keyboardActions = KeyboardActions(onAny = {
-
-            }),
-            errorMessage = null
-        )
-    }
-}
-
-@Composable
-fun LoginOptions() {
+fun LoginOptions(onSignUpClick: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -133,7 +81,7 @@ fun LoginOptions() {
             )
         }
         TextButton(
-            onClick = {}
+            onClick = onSignUpClick
         ) {
             Text(
                 text = buildAnnotatedString {
