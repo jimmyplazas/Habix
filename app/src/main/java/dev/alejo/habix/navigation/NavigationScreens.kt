@@ -9,4 +9,6 @@ sealed class NavigationScreens: NavKey {
     data object Onboarding : NavigationScreens()
     @Serializable
     data object Login : NavigationScreens()
+    @Serializable
+    data object SignUp : NavigationScreens()
 }
