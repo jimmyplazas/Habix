@@ -46,12 +46,12 @@ fun LoginForm(modifier: Modifier = Modifier) {
             "Login with Email",
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.tertiary,
-            modifier = Modifier.padding(top = AppDimens.Default)
+            modifier = Modifier.padding(top = AppDimens.Default).padding(vertical = AppDimens.Tiny)
         )
         HorizontalDivider(
             modifier = Modifier
-                .fillMaxWidth()
-                .background(Background)
+                .fillMaxWidth(),
+            color = MaterialTheme.colorScheme.background
         )
 
         LoginInputs()
@@ -153,5 +153,5 @@ fun LoginOptions() {
 @Preview(showBackground = true)
 @Composable
 private fun LoginFormPreview() {
-    LoginForm(Modifier.padding(AppDimens.Default))
+    LoginForm(Modifier.background(Color.Black).padding(AppDimens.Default))
 }
