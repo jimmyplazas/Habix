@@ -30,7 +30,6 @@ import dev.alejo.habix.core.presentation.HabixButton
 import dev.alejo.habix.core.presentation.HabixPasswordTextField
 import dev.alejo.habix.core.presentation.HabixTextField
 import dev.alejo.habix.ui.theme.AppDimens
-import dev.alejo.habix.ui.theme.Background
 
 @Composable
 fun LoginForm(modifier: Modifier = Modifier) {
