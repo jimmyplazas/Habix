@@ -13,7 +13,11 @@ import dev.alejo.habix.authentication.presentation.login.components.LoginForm
 import dev.alejo.habix.core.presentation.HabixTitle
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun LoginScreen(
+    modifier: Modifier = Modifier,
+    onLoginClick: () -> Unit,
+    onSignUpClick: () -> Unit
+) {
     Box(modifier = modifier.fillMaxSize()) {
         LoginBackground()
         Column(
@@ -24,7 +28,10 @@ fun LoginScreen(modifier: Modifier = Modifier) {
             HabixTitle("Welcome to")
             HabixTitle("monumental habits")
             Spacer(modifier = Modifier.weight(1f))
-            LoginForm()
+            LoginForm(
+                onLoginClick = onLoginClick,
+                onSignUpClick = onSignUpClick
+            )
         }
     }
 }
@@ -32,5 +39,8 @@ fun LoginScreen(modifier: Modifier = Modifier) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun LoginScreenPreview() {
-    LoginScreen()
+    LoginScreen(
+        onLoginClick = {},
+        onSignUpClick = {}
+    )
 }
