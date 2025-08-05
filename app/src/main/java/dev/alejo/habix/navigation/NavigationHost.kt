@@ -7,6 +7,8 @@ import androidx.navigation3.runtime.entry
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
+import dev.alejo.habix.authentication.presentation.login.LoginScreen
+import dev.alejo.habix.authentication.presentation.signup.SignUpScreen
 import dev.alejo.habix.onboarding.presentation.OnboardingScreen
 
 @Composable
@@ -26,7 +28,30 @@ fun NavigationHost(
                 }
             }
             entry<NavigationScreens.Login> {
-                Text("Login")
+                LoginScreen(
+                    navigateToHome = {
+                        backStack.remove(NavigationScreens.Login)
+                        backStack.add(NavigationScreens.Home)
+                    },
+                    navigateToSignUp = {
+                        backStack.add(NavigationScreens.SignUp)
+                    }
+
+                )
+            }
+            entry<NavigationScreens.SignUp> {
+                SignUpScreen(
+                    navigateToHome = {
+                        backStack.clear()
+                        backStack.add(NavigationScreens.Home)
+                    },
+                    navigateToLogin = {
+                        backStack.remove(NavigationScreens.SignUp)
+                    }
+                )
+            }
+            entry<NavigationScreens.Home> {
+                Text("This is the HOIMWWWWWWWWWW ")
             }
         }
     )

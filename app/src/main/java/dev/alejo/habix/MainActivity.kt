@@ -36,9 +36,14 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun getStartDestination(): NavigationScreens = if (viewModel.hasSeenOnboarding) {
-        NavigationScreens.Login
-    } else {
-        NavigationScreens.Onboarding
+    private fun getStartDestination(): NavigationScreens {
+        if (viewModel.isLoggedIn) {
+            return NavigationScreens.Home
+        }
+        return if (viewModel.hasSeenOnboarding) {
+            NavigationScreens.Login
+        } else {
+            NavigationScreens.Onboarding
+        }
     }
 }

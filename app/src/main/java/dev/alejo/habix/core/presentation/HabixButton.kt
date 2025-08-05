@@ -14,9 +14,10 @@ import dev.alejo.habix.ui.theme.AppDimens
 fun HabixButton(
     text: String,
     modifier: Modifier = Modifier,
+    isEnabled: Boolean = true,
     onClick: () -> Unit
 ) {
-    Button(onClick = onClick, modifier = modifier, shape = RoundedCornerShape(AppDimens.Small)) {
+    Button(onClick = onClick, enabled = isEnabled, modifier = modifier, shape = RoundedCornerShape(AppDimens.Small)) {
         Text(
             text = text,
             style = MaterialTheme.typography.bodyMedium.copy(
