@@ -1,5 +1,6 @@
 package dev.alejo.habix.navigation
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.entry
@@ -28,24 +29,29 @@ fun NavigationHost(
             }
             entry<NavigationScreens.Login> {
                 LoginScreen(
-                    onLoginClick = {
-                        /* TODO */
+                    navigateToHome = {
+                        backStack.remove(NavigationScreens.Login)
+                        backStack.add(NavigationScreens.Home)
                     },
-                    onSignUpClick = {
+                    navigateToSignUp = {
                         backStack.add(NavigationScreens.SignUp)
                     }
+
                 )
             }
             entry<NavigationScreens.SignUp> {
                 SignUpScreen(
-                    onSignUpClick = {
-                        /* TODO */
+                    navigateToHome = {
+                        backStack.clear()
+                        backStack.add(NavigationScreens.Home)
                     },
-                    onLoginClick = {
+                    navigateToLogin = {
                         backStack.remove(NavigationScreens.SignUp)
-                        backStack.add(NavigationScreens.Login)
                     }
                 )
+            }
+            entry<NavigationScreens.Home> {
+                Text("This is the HOIMWWWWWWWWWW ")
             }
         }
     )
