@@ -1,6 +1,5 @@
 package dev.alejo.habix.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.entry
@@ -9,6 +8,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import dev.alejo.habix.authentication.presentation.login.LoginScreen
 import dev.alejo.habix.authentication.presentation.signup.SignUpScreen
+import dev.alejo.habix.habits.presentation.home.HomeScreen
 import dev.alejo.habix.onboarding.presentation.OnboardingScreen
 
 @Composable
@@ -51,7 +51,7 @@ fun NavigationHost(
                 )
             }
             entry<NavigationScreens.Home> {
-                Text("This is the HOIMWWWWWWWWWW ")
+                HomeScreen()
             }
         }
     )
