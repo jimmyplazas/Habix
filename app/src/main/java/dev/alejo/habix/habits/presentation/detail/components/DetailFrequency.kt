@@ -10,19 +10,18 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import dev.alejo.habix.core.presentation.HabixCheckBox
 import dev.alejo.habix.ui.theme.AppDimens
 import java.time.DayOfWeek
 
 @Composable
-fun Frequency(
+fun DetailFrequency(
+    selectedDays: Set<DayOfWeek>,
+    onFrequencyChange: (DayOfWeek) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -50,26 +49,15 @@ fun Frequency(
             horizontalArrangement = Arrangement.spacedBy(AppDimens.ExtraTiny)
         ) {
             DayOfWeek.entries.forEach { day ->
-                Column(
+                DetailFrequencyDate(
+                    day = day,
+                    isChecked = selectedDays.contains(day),
+                    onCheckedChange = { onFrequencyChange(day) },
                     modifier = Modifier
                         .weight(1f)
                         .background(Color.White)
-                        .padding(vertical = AppDimens.Default),
-                    verticalArrangement = Arrangement.spacedBy(AppDimens.ExtraTiny),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = day.name.take(3).uppercase(),
-                        color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.5f),
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    HabixCheckBox(
-                        isChecked = true,
-                        onCheckedChange = {}
-                    )
-                }
+                        .padding(vertical = AppDimens.Default)
+                )
             }
         }
     }
@@ -78,5 +66,8 @@ fun Frequency(
 @Preview
 @Composable
 private fun FrequencyPreview() {
-    Frequency()
+    DetailFrequency(
+        selectedDays = setOf(DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY),
+        onFrequencyChange = {}
+    )
 }
