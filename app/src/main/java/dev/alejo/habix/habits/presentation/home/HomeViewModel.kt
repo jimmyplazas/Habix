@@ -3,20 +3,24 @@ package dev.alejo.habix.habits.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.alejo.habix.habits.domain.usecase.HomeUseCases
+import dev.alejo.habix.habits.domain.usecase.home.HabitUseCases
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val homeUseCases: HomeUseCases
+    private val homeUseCases: HabitUseCases
 ): ViewModel() {
 
     private val _state = MutableStateFlow(HomeState())
     val state = _state.asStateFlow()
+    private val _effect = Channel<HomeEffect>(Channel.BUFFERED)
+    val effect = _effect.receiveAsFlow()
 
     init {
         getHabits()
@@ -29,12 +33,25 @@ class HomeViewModel @Inject constructor(
                     homeUseCases.completeHabitUseCase(event.habit, _state.value.selectedDate)
                 }
             }
-            is HomeEvent.GangeDate -> {
+            is HomeEvent.ChangeDate -> {
                 _state.update {
                     it.copy(selectedDate = event.date)
                 }
                 getHabits()
             }
+
+            is HomeEvent.EditHabit -> {
+                viewModelScope.launch {
+                    _effect.send(HomeEffect.NavigateToDetail(event.habitId))
+                }
+            }
+
+            is HomeEvent.AddHabit -> {
+                viewModelScope.launch {
+                    _effect.send(HomeEffect.NavigateToDetail())
+                }
+            }
+
         }
     }
 
