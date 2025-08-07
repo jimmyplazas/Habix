@@ -1,11 +1,11 @@
-package dev.alejo.habix.habits.domain.usecase
+package dev.alejo.habix.habits.domain.usecase.home
 
 import dev.alejo.habix.habits.domain.model.Habit
-import dev.alejo.habix.habits.domain.repository.HomeRepository
+import dev.alejo.habix.habits.domain.repository.HabitRepository
 import java.time.ZonedDateTime
 
 class CompleteHabitUseCase (
-    private val repository: HomeRepository
+    private val repository: HabitRepository
 ) {
     suspend operator fun invoke(habit: Habit, date: ZonedDateTime) {
         val newHabit = if (habit.completedDates.contains(date.toLocalDate())) {
