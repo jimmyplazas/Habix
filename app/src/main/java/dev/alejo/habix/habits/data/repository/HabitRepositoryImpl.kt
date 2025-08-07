@@ -1,15 +1,15 @@
 package dev.alejo.habix.habits.data.repository
 
 import dev.alejo.habix.habits.domain.model.Habit
-import dev.alejo.habix.habits.domain.repository.HomeRepository
+import dev.alejo.habix.habits.domain.repository.HabitRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import java.time.LocalDate
 import java.time.ZonedDateTime
 
-class HomeRepositoryImpl : HomeRepository {
+class HabitRepositoryImpl : HabitRepository {
 
-    private val mockHabits = (1..12).map {
+    private val mockHabits = (1..3).map {
         val dates = if (it % 2 == 0) {
             listOf(LocalDate.now())
         } else emptyList()
@@ -28,8 +28,14 @@ class HomeRepositoryImpl : HomeRepository {
     }
 
     override suspend fun insertHabit(habit: Habit) {
-        val index = mockHabits.indexOf(habit)
-        mockHabits.removeAt(index)
-        mockHabits.add(index, habit)
+        val index = mockHabits.indexOfFirst { habit.id == it.id }
+        if (index == -1) {
+            mockHabits.add(habit)
+        } else {
+            mockHabits.removeAt(index)
+            mockHabits.add(index, habit)
+        }
     }
+
+    override fun getHabitById(habitId: String): Habit = mockHabits.first { it.id == habitId }
 }
