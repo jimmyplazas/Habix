@@ -2,12 +2,16 @@ package dev.alejo.habix.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entry
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.runtime.rememberSavedStateNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
+import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import dev.alejo.habix.authentication.presentation.login.LoginScreen
 import dev.alejo.habix.authentication.presentation.signup.SignUpScreen
+import dev.alejo.habix.habits.presentation.detail.DetailScreen
 import dev.alejo.habix.habits.presentation.home.HomeScreen
 import dev.alejo.habix.onboarding.presentation.OnboardingScreen
 
@@ -20,6 +24,11 @@ fun NavigationHost(
     NavDisplay(
         modifier = modifier,
         backStack = backStack,
+        entryDecorators = listOf(
+            rememberSceneSetupNavEntryDecorator(),
+            rememberSavedStateNavEntryDecorator(),
+            rememberViewModelStoreNavEntryDecorator()
+        ),
         entryProvider = entryProvider {
             entry<NavigationScreens.Onboarding> {
                 OnboardingScreen {
@@ -46,12 +55,21 @@ fun NavigationHost(
                         backStack.add(NavigationScreens.Home)
                     },
                     navigateToLogin = {
-                        backStack.remove(NavigationScreens.SignUp)
+                        backStack.removeLastOrNull()
                     }
                 )
             }
             entry<NavigationScreens.Home> {
-                HomeScreen()
+                HomeScreen(
+                    navigateToDetail = { habitId ->
+                        backStack.add(NavigationScreens.Detail(habitId))
+                    }
+                )
+            }
+            entry<NavigationScreens.Detail> {
+                DetailScreen(habitId = it.habitId) {
+                    backStack.removeLastOrNull()
+                }
             }
         }
     )
