@@ -10,11 +10,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -24,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import dev.alejo.habix.R
 import dev.alejo.habix.core.presentation.HabixBackground
+import dev.alejo.habix.core.presentation.HabixFloatingActionButton
 import dev.alejo.habix.core.presentation.HabixTopAppBar
 import dev.alejo.habix.habits.presentation.home.components.HabitItem
 import dev.alejo.habix.habits.presentation.home.components.HomeDateSelector
@@ -34,9 +37,20 @@ import java.time.ZonedDateTime
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
+    navigateToDetail: (habitId: String?) -> Unit
 ) {
     val state by viewModel.state.collectAsState()
+
+    LaunchedEffect(viewModel) {
+        viewModel.effect.collect { effect ->
+            when (effect) {
+                is HomeEffect.NavigateToDetail -> {
+                    navigateToDetail(effect.habitId)
+                }
+            }
+        }
+    }
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -44,8 +58,11 @@ fun HomeScreen(
             HabixTopAppBar(
                 title = "Home",
                 navigationIcon = Icons.Default.Settings
-            ) {
-
+            ) { /* TODO */ }
+        },
+        floatingActionButton = {
+            HabixFloatingActionButton(icon = Icons.Default.Add) {
+                viewModel.onEvent(HomeEvent.AddHabit)
             }
         }
     ) { innerPadding ->
@@ -99,7 +116,7 @@ fun HomeScreenContent(
                     selectedDate = state.selectedDate,
                     mainDate = ZonedDateTime.now(),
                     onDateSelected = { dateSelected ->
-                        onEvent(HomeEvent.GangeDate(dateSelected))
+                        onEvent(HomeEvent.ChangeDate(dateSelected))
                     }
                 )
             }
@@ -107,14 +124,15 @@ fun HomeScreenContent(
         }
 
         items(state.habits.size) {
+            val habit = state.habits[it]
             HabitItem(
-                habit = state.habits[it],
+                habit = habit,
                 selectedDate = state.selectedDate.toLocalDate(),
                 onCheckedChange = { checked ->
-                    onEvent(HomeEvent.CompleteHabit(state.habits[it]))
+                    onEvent(HomeEvent.CompleteHabit(habit))
                 },
                 modifier = Modifier.padding(start = AppDimens.Default),
-                onHabitClick = { }
+                onHabitClick = { onEvent(HomeEvent.EditHabit(habit.id)) }
             )
         }
     }
