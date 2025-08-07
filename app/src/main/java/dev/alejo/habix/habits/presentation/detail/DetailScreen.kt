@@ -1,45 +1,98 @@
 package dev.alejo.habix.habits.presentation.detail
 
-import androidx.compose.foundation.background
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.input.ImeAction
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.maxkeppeker.sheets.core.models.base.rememberUseCaseState
+import com.maxkeppeler.sheets.clock.ClockDialog
+import com.maxkeppeler.sheets.clock.models.ClockConfig
+import com.maxkeppeler.sheets.clock.models.ClockSelection
 import dev.alejo.habix.core.presentation.HabixBackground
+import dev.alejo.habix.core.presentation.HabixFloatingActionButton
 import dev.alejo.habix.core.presentation.HabixTextField
 import dev.alejo.habix.core.presentation.HabixTopAppBar
-import dev.alejo.habix.habits.presentation.detail.components.Frequency
+import dev.alejo.habix.habits.presentation.detail.components.DetailFrequency
+import dev.alejo.habix.habits.presentation.detail.components.DetailReminder
 import dev.alejo.habix.ui.theme.AppDimens
+import java.time.LocalTime
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
-    modifier: Modifier = Modifier
+    habitId: String?,
+    modifier: Modifier = Modifier,
+    onBack: () -> Unit
 ) {
+
+    val viewModel = hiltViewModel<DetailViewModel, DetailViewModel.Factory>(
+        creationCallback = { factory ->
+            factory.create(habitId)
+        }
+    )
+
+    LaunchedEffect(viewModel) {
+        viewModel.effect.collect { effect ->
+            when (effect) {
+                DetailEffect.NavigateBack -> { onBack() }
+            }
+        }
+    }
+
+    val state by viewModel.state.collectAsState()
+    val clockState = rememberUseCaseState()
+    val focusManager = LocalFocusManager.current
+    val imeBottomPadding = WindowInsets.ime.asPaddingValues().calculateBottomPadding()
+    val animatedPadding by animateDpAsState(targetValue = imeBottomPadding)
+
+    ClockDialog(
+        state = clockState,
+        selection = ClockSelection.HoursMinutes { hours, minutes ->
+            viewModel.onEvent(DetailEvent.ReminderChange(
+                LocalTime.of(hours, minutes)
+            ))
+        },
+        config = ClockConfig(
+            defaultTime = state.reminder,
+            is24HourFormat = true
+        )
+    )
+
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
             HabixTopAppBar(
-                title = "New Habit",
-                navigationIcon = Icons.Default.ArrowBack
+                title = if (habitId == null) "New Habit" else "Habit details",
+                navigationIcon = Icons.AutoMirrored.Filled.ArrowBack
+            ) { viewModel.onEvent(DetailEvent.Back) }
+        },
+        floatingActionButton = {
+            HabixFloatingActionButton(
+                modifier = Modifier.padding(bottom = animatedPadding),
+                icon = Icons.Default.Check
             ) {
-
+                viewModel.onEvent(DetailEvent.Save)
             }
         }
     ) { innerPadding ->
@@ -55,50 +108,32 @@ fun DetailScreen(
         ) {
             HabixTextField(
                 placeholder = "Enter habit name",
-                value = "",
-                onValueChange = {},
+                value = state.habitName,
+                onValueChange = {
+                    viewModel.onEvent(DetailEvent.HabitNameChange(it))
+                },
                 modifier = Modifier.fillMaxWidth(),
                 contentDescription = "Enter habit name",
-                backgroundColor = Color.White
+                backgroundColor = Color.White,
+                keyboardOptions = KeyboardOptions(
+                    imeAction = ImeAction.Done
+                ),
+                keyboardActions = KeyboardActions {
+                    focusManager.clearFocus()
+                    viewModel.onEvent(DetailEvent.Save)
+                }
             )
 
-            Frequency()
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(AppDimens.Medium))
-                    .background(Color.White)
-                    .padding(horizontal = AppDimens.Default, vertical = AppDimens.Tiny),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Reminder",
-                    fontSize = 16.sp,
-                    color = MaterialTheme.colorScheme.tertiary
-                )
-
-                TextButton(onClick = { /*TODO*/ }) {
-                    Row(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(AppDimens.Medium)),
-                        horizontalArrangement = Arrangement.spacedBy(AppDimens.Small),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = "10:00",
-                            fontSize = 16.sp,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                            contentDescription = "Select time",
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                    }
+            DetailFrequency(
+                selectedDays = state.frequency,
+                onFrequencyChange = {
+                    viewModel.onEvent(DetailEvent.FrequencyChange(it))
                 }
-            }
+            )
+
+            DetailReminder(
+                reminder = state.reminder
+            ) { clockState.show() }
         }
     }
 }
