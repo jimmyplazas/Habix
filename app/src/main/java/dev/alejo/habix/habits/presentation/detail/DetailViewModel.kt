@@ -77,16 +77,18 @@ class DetailViewModel @AssistedInject constructor(
     }
 
     private fun getHabitData(habitId: String) {
-        val habitData = detailUseCases.getHabitByIdUseCase(habitId)
-        _state.update {
-            it.copy(
-                habitId = habitData.id,
-                habitName = habitData.name,
-                frequency = habitData.frequency.toSet(),
-                reminder = habitData.reminder,
-                completedDates = habitData.completedDates,
-                startDate = habitData.startDate
-            )
+        viewModelScope.launch {
+            val habitData = detailUseCases.getHabitByIdUseCase(habitId)
+            _state.update {
+                it.copy(
+                    habitId = habitData.id,
+                    habitName = habitData.name,
+                    frequency = habitData.frequency.toSet(),
+                    reminder = habitData.reminder,
+                    completedDates = habitData.completedDates,
+                    startDate = habitData.startDate
+                )
+            }
         }
     }
 
