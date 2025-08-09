@@ -4,9 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.alejo.habix.habits.domain.usecase.home.HabitUseCases
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -21,6 +23,8 @@ class HomeViewModel @Inject constructor(
     val state = _state.asStateFlow()
     private val _effect = Channel<HomeEffect>(Channel.BUFFERED)
     val effect = _effect.receiveAsFlow()
+
+    private var habitsJob: Job? = null
 
     init {
         getHabits()
@@ -56,9 +60,10 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getHabits() {
-        viewModelScope.launch {
+        habitsJob?.cancel()
+        habitsJob = viewModelScope.launch {
             homeUseCases.getAllHabitsForSelectedDate(_state.value.selectedDate)
-                .collect { habits ->
+                .collectLatest { habits ->
                     _state.update {
                         it.copy(habits = habits)
                     }
