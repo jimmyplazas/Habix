@@ -1,41 +1,45 @@
 package dev.alejo.habix.habits.data.repository
 
+import dev.alejo.habix.habits.data.extension.toStartOfDayTimeStamp
+import dev.alejo.habix.habits.data.local.HomeDao
+import dev.alejo.habix.habits.data.mapper.toDomain
+import dev.alejo.habix.habits.data.mapper.toDto
+import dev.alejo.habix.habits.data.mapper.toEntity
+import dev.alejo.habix.habits.data.remote.ApiService
+import dev.alejo.habix.habits.data.remote.util.resultOf
 import dev.alejo.habix.habits.domain.model.Habit
 import dev.alejo.habix.habits.domain.repository.HabitRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
-import java.time.LocalDate
+import kotlinx.coroutines.flow.map
 import java.time.ZonedDateTime
 
-class HabitRepositoryImpl : HabitRepository {
+class HabitRepositoryImpl(
+    private val dao: HomeDao,
+    private val api: ApiService
+) : HabitRepository {
 
-    private val mockHabits = (1..3).map {
-        val dates = if (it % 2 == 0) {
-            listOf(LocalDate.now())
-        } else emptyList()
-        Habit(
-            id = it.toString(),
-            name = "Habit $it",
-            frequency = emptyList(),
-            completedDates = dates,
-            reminder = ZonedDateTime.now().toLocalTime(),
-            startDate = ZonedDateTime.now()
-        )
-    }.toMutableList()
+    override fun getAllHabitsForSelectedDate(
+        date: ZonedDateTime
+    ): Flow<List<Habit>> = dao
+        .getHabitsForSelectedDate(date.toStartOfDayTimeStamp())
+        .map { it.map { habit -> habit.toDomain() } }
 
-    override fun getAllHabitsForSelectedDate(date: ZonedDateTime): Flow<List<Habit>> {
-        return flowOf(mockHabits)
-    }
-
-    override suspend fun insertHabit(habit: Habit) {
-        val index = mockHabits.indexOfFirst { habit.id == it.id }
-        if (index == -1) {
-            mockHabits.add(habit)
-        } else {
-            mockHabits.removeAt(index)
-            mockHabits.add(index, habit)
+    override suspend fun fetchHabitsFromApi() {
+        resultOf {
+            val habits = api.getAllHabits().toDomain()
+            insertHabits(habits)
         }
     }
 
-    override fun getHabitById(habitId: String): Habit = mockHabits.first { it.id == habitId }
+    override suspend fun insertHabit(habit: Habit) {
+        dao.insertHabit(habit.toEntity())
+        resultOf {
+            api.insertHabit(habit.toDto())
+        }
+    }
+
+    private suspend fun insertHabits(habits: List<Habit>) =
+        dao.insertHabits(habits.map { it.toEntity() })
+
+    override suspend fun getHabitById(habitId: String): Habit = dao.getHabitById(habitId).toDomain()
 }
