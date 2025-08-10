@@ -2,12 +2,9 @@ package dev.alejo.habix.habits.data.local.typeconverter
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
-import com.squareup.moshi.Moshi
 
 @ProvidedTypeConverter
-class HomeTypeConverter(
-    private val moshi: Moshi
-) {
+class HomeTypeConverter {
 
     @TypeConverter
     fun fromFrequency(days: List<Int>): String = joinIntoString(days)
