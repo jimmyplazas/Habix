@@ -63,6 +63,9 @@ fun NavigationHost(
                 HomeScreen(
                     navigateToDetail = { habitId ->
                         backStack.add(NavigationScreens.Detail(habitId))
+                    },
+                    navigateBack = {
+                        backStack.removeLastOrNull()
                     }
                 )
             }
