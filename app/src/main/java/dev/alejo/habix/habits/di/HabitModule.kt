@@ -1,17 +1,20 @@
 package dev.alejo.habix.habits.di
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
-import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.alejo.habix.habits.data.alarm.AlarmHandlerImpl
 import dev.alejo.habix.habits.data.local.HomeDao
 import dev.alejo.habix.habits.data.local.HomeDatabase
 import dev.alejo.habix.habits.data.local.typeconverter.HomeTypeConverter
 import dev.alejo.habix.habits.data.remote.ApiService
 import dev.alejo.habix.habits.data.repository.HabitRepositoryImpl
+import dev.alejo.habix.habits.domain.alarm.AlarmHandler
 import dev.alejo.habix.habits.domain.repository.HabitRepository
 import dev.alejo.habix.habits.domain.usecase.detail.DetailUseCases
 import dev.alejo.habix.habits.domain.usecase.detail.GetHabitByIdUseCase
@@ -47,15 +50,14 @@ object HabitModule {
     @Provides
     @Singleton
     fun provideHomeDao(
-        context: Application,
-        moshi: Moshi
+        context: Application
     ): HomeDao = Room
         .databaseBuilder(
             context,
             HomeDatabase::class.java,
             "habit_db"
         )
-        .addTypeConverter(HomeTypeConverter(moshi))
+        .addTypeConverter(HomeTypeConverter())
         .build()
         .homeDao
 
@@ -63,8 +65,9 @@ object HabitModule {
     @Singleton
     fun provideHomeRepository(
         dao: HomeDao,
-        api: ApiService
-    ): HabitRepository = HabitRepositoryImpl(dao, api)
+        api: ApiService,
+        alarmHandler: AlarmHandler
+    ): HabitRepository = HabitRepositoryImpl(dao, api, alarmHandler)
 
     @Provides
     @Singleton
@@ -86,6 +89,8 @@ object HabitModule {
 
     @Provides
     @Singleton
-    fun provideMoshi(): Moshi = Moshi.Builder().build()
+    fun provideAlarmHandler(
+        @ApplicationContext context: Context
+    ): AlarmHandler = AlarmHandlerImpl(context)
 
 }

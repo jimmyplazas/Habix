@@ -56,6 +56,11 @@ class HomeViewModel @Inject constructor(
                 }
             }
 
+            HomeEvent.GoBack -> {
+                viewModelScope.launch {
+                    _effect.send(HomeEffect.GoBack)
+                }
+            }
         }
     }
 

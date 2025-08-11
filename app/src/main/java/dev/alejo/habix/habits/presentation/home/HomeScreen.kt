@@ -1,5 +1,6 @@
 package dev.alejo.habix.habits.presentation.home
 
+import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -29,6 +30,7 @@ import dev.alejo.habix.core.presentation.HabixBackground
 import dev.alejo.habix.core.presentation.HabixFloatingActionButton
 import dev.alejo.habix.core.presentation.HabixTopAppBar
 import dev.alejo.habix.habits.presentation.home.components.HabitItem
+import dev.alejo.habix.habits.presentation.home.components.HomeAskPermission
 import dev.alejo.habix.habits.presentation.home.components.HomeDateSelector
 import dev.alejo.habix.habits.presentation.home.components.HomeQuote
 import dev.alejo.habix.ui.theme.AppDimens
@@ -38,7 +40,8 @@ import java.time.ZonedDateTime
 fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
-    navigateToDetail: (habitId: String?) -> Unit
+    navigateToDetail: (habitId: String?) -> Unit,
+    navigateBack: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -48,6 +51,8 @@ fun HomeScreen(
                 is HomeEffect.NavigateToDetail -> {
                     navigateToDetail(effect.habitId)
                 }
+
+                HomeEffect.GoBack -> { navigateBack() }
             }
         }
     }
@@ -58,7 +63,7 @@ fun HomeScreen(
             HabixTopAppBar(
                 title = "Home",
                 navigationIcon = Icons.Default.Settings
-            ) { /* TODO */ }
+            ) { viewModel.onEvent(HomeEvent.GoBack) }
         },
         floatingActionButton = {
             HabixFloatingActionButton(icon = Icons.Default.Add) {
@@ -66,6 +71,9 @@ fun HomeScreen(
             }
         }
     ) { innerPadding ->
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            HomeAskPermission(permission = android.Manifest.permission.POST_NOTIFICATIONS)
+        }
         HabixBackground()
         HomeScreenContent(
             modifier = Modifier
