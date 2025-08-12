@@ -4,6 +4,7 @@ import dev.alejo.habix.habits.data.extension.toStartOfDayTimeStamp
 import dev.alejo.habix.habits.data.extension.toTimeStamp
 import dev.alejo.habix.habits.data.extension.toZonedDateTime
 import dev.alejo.habix.habits.data.local.entity.HabitEntity
+import dev.alejo.habix.habits.data.local.entity.HabitSyncEntity
 import dev.alejo.habix.habits.data.remote.dto.HabitDto
 import dev.alejo.habix.habits.data.remote.dto.HabitResponse
 import dev.alejo.habix.habits.domain.model.Habit
@@ -53,3 +54,5 @@ fun Habit.toDto() : HabitResponse {
     )
     return mapOf(id to habit)
 }
+
+fun Habit.toHabitSyncEntity() : HabitSyncEntity = HabitSyncEntity(id = id)
