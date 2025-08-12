@@ -9,4 +9,5 @@ interface HabitRepository {
     suspend fun fetchHabitsFromApi()
     suspend fun insertHabit(habit: Habit)
     suspend fun getHabitById(habitId: String): Habit
+    suspend fun syncHabits()
 }
