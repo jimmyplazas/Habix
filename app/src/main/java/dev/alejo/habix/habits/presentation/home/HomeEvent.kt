@@ -9,4 +9,5 @@ sealed class HomeEvent {
     data class EditHabit(val habitId: String) : HomeEvent()
     data object AddHabit : HomeEvent()
     data object GoBack : HomeEvent()
+    data object GoSettings : HomeEvent()
 }
