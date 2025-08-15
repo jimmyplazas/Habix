@@ -19,4 +19,5 @@ object AppDimens {
     val HomeDateItemSize = 52.dp
     val CheckBoxSize = 40.dp
     val FABSize = 60.dp
+    val SettingsItemSize = 58.dp
 }
