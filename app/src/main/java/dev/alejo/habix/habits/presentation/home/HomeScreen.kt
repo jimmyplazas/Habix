@@ -41,6 +41,7 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
     navigateToDetail: (habitId: String?) -> Unit,
+    navigateToSettings: () -> Unit,
     navigateBack: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
@@ -53,6 +54,7 @@ fun HomeScreen(
                 }
 
                 HomeEffect.GoBack -> { navigateBack() }
+                HomeEffect.GoSettings -> { navigateToSettings() }
             }
         }
     }
@@ -63,7 +65,7 @@ fun HomeScreen(
             HabixTopAppBar(
                 title = "Home",
                 navigationIcon = Icons.Default.Settings
-            ) { viewModel.onEvent(HomeEvent.GoBack) }
+            ) { viewModel.onEvent(HomeEvent.GoSettings) }
         },
         floatingActionButton = {
             HabixFloatingActionButton(icon = Icons.Default.Add) {
