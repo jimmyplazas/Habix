@@ -8,7 +8,8 @@ plugins {
     alias(libs.plugins.crashlytics)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.ksp)
+    //alias(libs.plugins.ksp)
+    id("kotlin-kapt")
 }
 
 android {
@@ -70,10 +71,14 @@ dependencies {
     implementation(libs.androidx.material3.adaptive)
     implementation(libs.androidx.material3.adaptive.navigation3)
 
+    // Startup
+    implementation("androidx.startup:startup-runtime:1.2.0")
+
     // Dagger Hilt
     implementation(libs.dagger.hilt)
     implementation(libs.dagger.hilt.navigation)
-    ksp(libs.dagger.hilt.compiler)
+    kapt(libs.androidx.hilt.compiler)
+    kapt(libs.dagger.hilt.compiler)
 
     // Firebase
     implementation(platform(libs.firebase.bom))
@@ -98,7 +103,7 @@ dependencies {
 
     // Room
     implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.runtime)
 
     // Retrofit

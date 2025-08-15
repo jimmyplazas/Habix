@@ -1,8 +1,8 @@
 package dev.alejo.habix.habits.di
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import androidx.work.WorkManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,6 +22,7 @@ import dev.alejo.habix.habits.domain.usecase.detail.InsertHabitUseCase
 import dev.alejo.habix.habits.domain.usecase.home.CompleteHabitUseCase
 import dev.alejo.habix.habits.domain.usecase.home.GetAllHabitsForSelectedDate
 import dev.alejo.habix.habits.domain.usecase.home.HabitUseCases
+import dev.alejo.habix.habits.domain.usecase.home.HomeHabitSyncUseCase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -31,6 +32,25 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object HabitModule {
+
+    @Provides
+    @Singleton
+    fun provideHabitUseCases(repository: HabitRepository): HabitUseCases {
+        return HabitUseCases(
+            getAllHabitsForSelectedDate = GetAllHabitsForSelectedDate(repository),
+            completeHabitUseCase = CompleteHabitUseCase(repository),
+            syncHabitsUseCase = HomeHabitSyncUseCase(repository)
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideDetailUseCases(repository: HabitRepository): DetailUseCases {
+        return DetailUseCases(
+            getHabitByIdUseCase = GetHabitByIdUseCase(repository),
+            insertHabitUseCase = InsertHabitUseCase(repository)
+        )
+    }
 
     @Provides
     @Singleton
@@ -50,7 +70,7 @@ object HabitModule {
     @Provides
     @Singleton
     fun provideHomeDao(
-        context: Application
+        @ApplicationContext context: Context
     ): HomeDao = Room
         .databaseBuilder(
             context,
@@ -66,26 +86,15 @@ object HabitModule {
     fun provideHomeRepository(
         dao: HomeDao,
         api: ApiService,
-        alarmHandler: AlarmHandler
-    ): HabitRepository = HabitRepositoryImpl(dao, api, alarmHandler)
+        alarmHandler: AlarmHandler,
+        workManager: WorkManager
+    ): HabitRepository = HabitRepositoryImpl(dao, api, alarmHandler, workManager)
 
     @Provides
     @Singleton
-    fun provideHabitUseCases(repository: HabitRepository): HabitUseCases {
-        return HabitUseCases(
-            getAllHabitsForSelectedDate = GetAllHabitsForSelectedDate(repository),
-            completeHabitUseCase = CompleteHabitUseCase(repository)
-        )
-    }
-
-    @Provides
-    @Singleton
-    fun provideDetailUseCases(repository: HabitRepository): DetailUseCases {
-        return DetailUseCases(
-            getHabitByIdUseCase = GetHabitByIdUseCase(repository),
-            insertHabitUseCase = InsertHabitUseCase(repository)
-        )
-    }
+    fun provideWorkManager(
+        @ApplicationContext context: Context
+    ): WorkManager = WorkManager.getInstance(context)
 
     @Provides
     @Singleton
