@@ -15,6 +15,9 @@ interface HomeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertHabit(habit: HabitEntity)
 
+    @Query("SELECT * FROM HabitEntity")
+    fun getAllHabits(): List<HabitEntity>
+
     @Query("SELECT * FROM HabitEntity WHERE id = :id")
     suspend fun getHabitById(id: String): HabitEntity
 
