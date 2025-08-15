@@ -13,4 +13,8 @@ sealed class NavigationScreens: NavKey {
     data object SignUp : NavigationScreens()
     @Serializable
     data object Home : NavigationScreens()
+    @Serializable
+    data class Detail(val habitId: String? = null) : NavigationScreens()
+    @Serializable
+    data object Settings : NavigationScreens()
 }

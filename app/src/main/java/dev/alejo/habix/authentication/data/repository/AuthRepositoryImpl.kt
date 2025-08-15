@@ -25,4 +25,8 @@ class AuthRepositoryImpl : AuthRepository {
     }
 
     override fun getUserId(): String? = Firebase.auth.currentUser?.uid
+
+    override fun logout() {
+        Firebase.auth.signOut()
+    }
 }

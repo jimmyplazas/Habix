@@ -29,7 +29,8 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(innerPadding),
-                        startDestination = getStartDestination()
+                        startDestination = getStartDestination(),
+                        onSignOut = { viewModel.signOut() }
                     )
                 }
             }

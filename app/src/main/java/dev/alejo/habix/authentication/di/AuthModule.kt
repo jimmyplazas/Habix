@@ -11,6 +11,7 @@ import dev.alejo.habix.authentication.domain.repository.AuthRepository
 import dev.alejo.habix.authentication.domain.usecase.GetUserIdUseCase
 import dev.alejo.habix.authentication.domain.usecase.LoginUseCases
 import dev.alejo.habix.authentication.domain.usecase.LoginWithEmailUseCase
+import dev.alejo.habix.authentication.domain.usecase.SignOutUseCase
 import dev.alejo.habix.authentication.domain.usecase.SignUpUseCases
 import dev.alejo.habix.authentication.domain.usecase.SignUpWithEmailUseCase
 import dev.alejo.habix.authentication.domain.usecase.ValidateEmailUseCase
@@ -56,5 +57,11 @@ object AuthModule {
     fun provideGetUserIdUseCase(
         repository: AuthRepository
     ): GetUserIdUseCase = GetUserIdUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun provideSignOutUseCase(
+        repository: AuthRepository
+    ): SignOutUseCase = SignOutUseCase(repository)
 
 }
