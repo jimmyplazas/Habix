@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.alejo.habix.habits.domain.usecase.home.HabitUseCases
+import dev.alejo.habix.habits.presentation.home.HomeEffect.NavigateToDetail
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,19 +50,25 @@ class HomeViewModel @Inject constructor(
 
             is HomeEvent.EditHabit -> {
                 viewModelScope.launch {
-                    _effect.send(HomeEffect.NavigateToDetail(event.habitId))
+                    _effect.send(NavigateToDetail(event.habitId))
                 }
             }
 
             is HomeEvent.AddHabit -> {
                 viewModelScope.launch {
-                    _effect.send(HomeEffect.NavigateToDetail())
+                    _effect.send(NavigateToDetail())
                 }
             }
 
             HomeEvent.GoBack -> {
                 viewModelScope.launch {
                     _effect.send(HomeEffect.GoBack)
+                }
+            }
+
+            HomeEvent.GoSettings -> {
+                viewModelScope.launch {
+                    _effect.send(HomeEffect.GoSettings)
                 }
             }
         }
