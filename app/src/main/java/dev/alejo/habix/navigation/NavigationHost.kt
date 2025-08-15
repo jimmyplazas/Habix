@@ -14,11 +14,13 @@ import dev.alejo.habix.authentication.presentation.signup.SignUpScreen
 import dev.alejo.habix.habits.presentation.detail.DetailScreen
 import dev.alejo.habix.habits.presentation.home.HomeScreen
 import dev.alejo.habix.onboarding.presentation.OnboardingScreen
+import dev.alejo.habix.settings.presentation.SettingsScreen
 
 @Composable
 fun NavigationHost(
     modifier: Modifier = Modifier,
-    startDestination: NavigationScreens = NavigationScreens.Onboarding
+    startDestination: NavigationScreens = NavigationScreens.Onboarding,
+    onSignOut: () -> Unit
 ) {
     val backStack = rememberNavBackStack(startDestination)
     NavDisplay(
@@ -64,6 +66,9 @@ fun NavigationHost(
                     navigateToDetail = { habitId ->
                         backStack.add(NavigationScreens.Detail(habitId))
                     },
+                    navigateToSettings = {
+                        backStack.add(NavigationScreens.Settings)
+                    },
                     navigateBack = {
                         backStack.removeLastOrNull()
                     }
@@ -73,6 +78,18 @@ fun NavigationHost(
                 DetailScreen(habitId = it.habitId) {
                     backStack.removeLastOrNull()
                 }
+            }
+            entry<NavigationScreens.Settings> {
+                SettingsScreen(
+                    onBack = {
+                        backStack.removeLastOrNull()
+                    },
+                    onSignOut = {
+                        backStack.clear()
+                        backStack.add(NavigationScreens.Login)
+                        onSignOut()
+                    }
+                )
             }
         }
     )
