@@ -6,6 +6,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.alejo.habix.authentication.domain.usecase.LoginUseCases
 import dev.alejo.habix.authentication.domain.usecase.PasswordResult
 import dev.alejo.habix.authentication.presentation.util.PasswordParser
+import dev.alejo.habix.core.di.IoDispatcher
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginUseCases: LoginUseCases
+    private val loginUseCases: LoginUseCases,
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(LoginState())
@@ -56,7 +59,7 @@ class LoginViewModel @Inject constructor(
 
         _state.update { it.copy(isLoading = true) }
 
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             loginUseCases.loginWithEmail(currentState.email, currentState.password)
                 .onSuccess {
                     _effect.send(LoginEffect.NavigateToHome)
