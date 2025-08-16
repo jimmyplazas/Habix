@@ -1,5 +1,6 @@
 package dev.alejo.habix.habits.home
 
+import android.Manifest
 import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.compose.ui.test.assertIsDisplayed
@@ -13,6 +14,7 @@ import androidx.navigation3.runtime.rememberSavedStateNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.rule.GrantPermissionRule
 import androidx.work.Configuration
 import androidx.work.testing.SynchronousExecutor
 import androidx.work.testing.WorkManagerTestInitHelper
@@ -44,6 +46,9 @@ class CreateHabit2E2 {
 
     @get:Rule
     val composeRule = createAndroidComposeRule<MainActivity>()
+
+    @get:Rule
+    val notificationPermission = GrantPermissionRule.grant(Manifest.permission.POST_NOTIFICATIONS)
 
     private lateinit var homeRepository: FakeHomeRepository
     private lateinit var homeViewModel: HomeViewModel
@@ -110,6 +115,7 @@ class CreateHabit2E2 {
     @Test
     fun createHabit() {
         composeRule.onNodeWithText("Home").assertIsDisplayed()
+        Thread.sleep(5000)
     }
 
 }
