@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.alejo.habix.authentication.domain.usecase.PasswordResult
 import dev.alejo.habix.authentication.domain.usecase.SignUpUseCases
+import dev.alejo.habix.authentication.presentation.util.PasswordParser
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -52,8 +53,8 @@ class SignUpViewModel @Inject constructor(
         }
 
         val passwordResult = signUpUseCases.validatePassword(currentState.password)
-        if (passwordResult is PasswordResult.Invalid) {
-            _state.update { it.copy(passwordError = passwordResult.message) }
+        if (passwordResult != PasswordResult.VALID) {
+            _state.update { it.copy(passwordError = PasswordParser.fromValidationResult(passwordResult)) }
             hasError = true
         }
 
