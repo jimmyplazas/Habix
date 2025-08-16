@@ -128,6 +128,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.androidx.work.testing)
+    androidTestImplementation(libs.androidx.rules)
 
 
     debugImplementation(libs.androidx.ui.tooling)
