@@ -62,6 +62,14 @@ class LoginViewModelTest {
     }
 
     @Test
+    fun `Given a password, verify the state updates the password`() {
+        val password = "Asd123"
+        viewModel.onEvent(LoginEvent.PasswordChange(password = password))
+        val state = viewModel.state.value
+        assertEquals(password, state.password)
+    }
+
+    @Test
     fun `Given invalid email, return email error`() {
         val email = ""
         val password = "asdASD123"
@@ -100,6 +108,14 @@ class LoginViewModelTest {
         val stateUpdated = viewModel.state.value
         assert(!stateUpdated.isLoading)
         assertNotNull(stateUpdated.emailError)
+    }
+
+    @Test
+    fun `Given no credentials, navigate to signup`() = scope.runTest {
+        viewModel.onEvent(LoginEvent.SignUp)
+        advanceUntilIdle()
+        val effect = viewModel.effect.first()
+        assertEquals(LoginEffect.NavigateToSignUp, effect)
     }
 
 }
