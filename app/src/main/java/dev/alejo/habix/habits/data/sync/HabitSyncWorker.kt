@@ -45,8 +45,9 @@ class HabitSyncWorker @AssistedInject constructor(
 
     private suspend fun sync(habitSync: HabitSyncEntity) {
         val habit = dao.getHabitById(userId, habitSync.id)
+        val token = sessionManager.getUserToken()!!
         resultOf {
-            api.insertHabit(userId, habit.toDomain().toDto())
+            api.insertHabit(userId = userId, token = token, habit = habit.toDomain().toDto())
         }.onSuccess {
             dao.deleteHabitSync(habitSync)
         }.onFailure {
