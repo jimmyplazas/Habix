@@ -5,6 +5,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -13,11 +14,15 @@ interface ApiService {
     }
 
     @GET("habits/{userId}.json")
-    suspend fun getAllHabits(@Path("userId") userId: String): HabitResponse
+    suspend fun getAllHabits(
+        @Path("userId") userId: String,
+        @Query("auth") token: String
+    ): HabitResponse
 
     @PATCH("habits/{userId}.json")
     suspend fun insertHabit(
         @Path("userId") userId: String,
+        @Query("auth") token: String,
         @Body habit: HabitResponse
     )
 
