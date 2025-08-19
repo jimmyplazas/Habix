@@ -6,6 +6,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.alejo.habix.core.session.SessionManager
 import dev.alejo.habix.habits.domain.model.Habit
 import dev.alejo.habix.habits.domain.usecase.detail.DetailUseCases
 import kotlinx.coroutines.channels.Channel
@@ -19,7 +20,8 @@ import java.util.UUID
 @HiltViewModel(assistedFactory = DetailViewModel.Factory::class)
 class DetailViewModel @AssistedInject constructor(
     @Assisted private val habitId: String?,
-    private val detailUseCases: DetailUseCases
+    private val detailUseCases: DetailUseCases,
+    private val sessionManager: SessionManager
 ) : ViewModel() {
 
     @AssistedFactory
@@ -66,6 +68,7 @@ class DetailViewModel @AssistedInject constructor(
         viewModelScope.launch {
             val habit = Habit(
                 id = _state.value.habitId ?: UUID.randomUUID().toString(),
+                userId = sessionManager.getUserId()!!,
                 name = _state.value.habitName,
                 frequency = _state.value.frequency.toList(),
                 completedDates = _state.value.completedDates,
