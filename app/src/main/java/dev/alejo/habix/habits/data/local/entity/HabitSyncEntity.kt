@@ -6,5 +6,6 @@ import androidx.room.PrimaryKey
 @Entity
 data class HabitSyncEntity(
     @PrimaryKey(autoGenerate = false)
-    val id: String
+    val id: String,
+    val userId: String
 )
