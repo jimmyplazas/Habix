@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.alejo.habix.core.session.SessionManager
 import dev.alejo.habix.habits.data.alarm.AlarmHandlerImpl
 import dev.alejo.habix.habits.data.local.HomeDao
 import dev.alejo.habix.habits.data.local.HomeDatabase
@@ -78,6 +79,7 @@ object HabitModule {
             "habit_db"
         )
         .addTypeConverter(HomeTypeConverter())
+        .fallbackToDestructiveMigration(true)
         .build()
         .homeDao
 
@@ -87,8 +89,9 @@ object HabitModule {
         dao: HomeDao,
         api: ApiService,
         alarmHandler: AlarmHandler,
-        workManager: WorkManager
-    ): HabitRepository = HabitRepositoryImpl(dao, api, alarmHandler, workManager)
+        workManager: WorkManager,
+        sessionManager: SessionManager
+    ): HabitRepository = HabitRepositoryImpl(dao, api, alarmHandler, workManager, sessionManager)
 
     @Provides
     @Singleton
