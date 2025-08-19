@@ -4,6 +4,7 @@ import dev.alejo.habix.habits.data.remote.dto.HabitResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -11,10 +12,13 @@ interface ApiService {
         const val BASE_URL = "https://habix-33b5f-default-rtdb.firebaseio.com/"
     }
 
-    @GET("habits.json")
-    suspend fun getAllHabits(): HabitResponse
+    @GET("habits/{userId}.json")
+    suspend fun getAllHabits(@Path("userId") userId: String): HabitResponse
 
-    @PATCH("habits.json")
-    suspend fun insertHabit(@Body habit: HabitResponse)
+    @PATCH("habits/{userId}.json")
+    suspend fun insertHabit(
+        @Path("userId") userId: String,
+        @Body habit: HabitResponse
+    )
 
 }
