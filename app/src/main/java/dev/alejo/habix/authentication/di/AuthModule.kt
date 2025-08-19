@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.alejo.habix.authentication.data.matcher.EmailMatcherImpl
 import dev.alejo.habix.authentication.data.repository.AuthRepositoryImpl
+import dev.alejo.habix.authentication.data.session.SessionManagerImpl
 import dev.alejo.habix.authentication.domain.matcher.EmailMatcher
 import dev.alejo.habix.authentication.domain.repository.AuthRepository
 import dev.alejo.habix.authentication.domain.usecase.GetUserIdUseCase
@@ -16,11 +17,16 @@ import dev.alejo.habix.authentication.domain.usecase.SignUpUseCases
 import dev.alejo.habix.authentication.domain.usecase.SignUpWithEmailUseCase
 import dev.alejo.habix.authentication.domain.usecase.ValidateEmailUseCase
 import dev.alejo.habix.authentication.domain.usecase.ValidatePasswordUseCase
+import dev.alejo.habix.core.session.SessionManager
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AuthModule {
+
+    @Provides
+    @Singleton
+    fun provideSessionManager(): SessionManager = SessionManagerImpl()
 
     @Provides
     @Singleton
@@ -55,8 +61,8 @@ object AuthModule {
     @Provides
     @Singleton
     fun provideGetUserIdUseCase(
-        repository: AuthRepository
-    ): GetUserIdUseCase = GetUserIdUseCase(repository)
+        sessionManager: SessionManager
+    ): GetUserIdUseCase = GetUserIdUseCase(sessionManager)
 
     @Provides
     @Singleton

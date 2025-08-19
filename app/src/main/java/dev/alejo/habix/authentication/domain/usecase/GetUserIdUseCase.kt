@@ -1,9 +1,9 @@
 package dev.alejo.habix.authentication.domain.usecase
 
-import dev.alejo.habix.authentication.domain.repository.AuthRepository
+import dev.alejo.habix.core.session.SessionManager
 
 class GetUserIdUseCase(
-    private val repository: AuthRepository
+    private val sessionManager: SessionManager
 ) {
-    operator fun invoke(): String? = repository.getUserId()
+    operator fun invoke(): String? = sessionManager.getUserId()
 }

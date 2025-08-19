@@ -12,6 +12,7 @@ import java.time.DayOfWeek
 
 fun HabitEntity.toDomain(): Habit = Habit(
     id = id,
+    userId = userId,
     name = name,
     frequency = frequency.map { DayOfWeek.of(it) },
     completedDates = completedDates.map { it.toZonedDateTime().toLocalDate() },
@@ -21,6 +22,7 @@ fun HabitEntity.toDomain(): Habit = Habit(
 
 fun Habit.toEntity() = HabitEntity(
     id = id,
+    userId = userId,
     name = name,
     frequency = frequency.map { it.value },
     completedDates = completedDates.map { it.toZonedDateTime().toTimeStamp() },
@@ -28,23 +30,24 @@ fun Habit.toEntity() = HabitEntity(
     startDate = startDate.toStartOfDayTimeStamp()
 )
 
-fun HabitResponse.toDomain(): List<Habit> {
+fun HabitResponse.toDomain(userId: String): List<Habit> {
     return this.entries.map { habitResponse ->
         val (habitId, habit) = habitResponse
         Habit(
             id = habitId,
+            userId = userId,
             name = habit.name,
             frequency = habit.frequency.map { DayOfWeek.of(it) },
             completedDates = habit.completedDates?.map {
                 it.toZonedDateTime().toLocalDate()
-            }?: emptyList(),
+            } ?: emptyList(),
             reminder = habit.reminder.toZonedDateTime().toLocalTime(),
             startDate = habit.startDate.toZonedDateTime()
         )
     }
 }
 
-fun Habit.toDto() : HabitResponse {
+fun Habit.toDto(): HabitResponse {
     val habit = HabitDto(
         name = name,
         frequency = frequency.map { it.value },
@@ -55,4 +58,5 @@ fun Habit.toDto() : HabitResponse {
     return mapOf(id to habit)
 }
 
-fun Habit.toHabitSyncEntity() : HabitSyncEntity = HabitSyncEntity(id = id)
+fun Habit.toHabitSyncEntity(userId: String): HabitSyncEntity =
+    HabitSyncEntity(id = id, userId = userId)

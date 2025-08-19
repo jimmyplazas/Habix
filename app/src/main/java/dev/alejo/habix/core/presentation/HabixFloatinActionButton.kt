@@ -24,7 +24,7 @@ fun HabixFloatingActionButton(
             color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
             shape = FloatingActionButtonDefaults.shape
         )
-            .padding(AppDimens.Tiny)
+            .padding(AppDimens.ExtraTiny)
     ) {
         FloatingActionButton(
             containerColor = MaterialTheme.colorScheme.primary,
