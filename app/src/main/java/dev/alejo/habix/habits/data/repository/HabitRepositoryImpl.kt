@@ -6,6 +6,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import dev.alejo.habix.core.session.SessionManager
 import dev.alejo.habix.habits.data.extension.toStartOfDayTimeStamp
 import dev.alejo.habix.habits.data.local.HomeDao
 import dev.alejo.habix.habits.data.mapper.toDomain
@@ -27,29 +28,35 @@ class HabitRepositoryImpl(
     private val dao: HomeDao,
     private val api: ApiService,
     private val alarmHandler: AlarmHandler,
-    private val workManager: WorkManager
+    private val workManager: WorkManager,
+    private val sessionManager: SessionManager
 ) : HabitRepository {
 
     override fun getAllHabitsForSelectedDate(
         date: ZonedDateTime
-    ): Flow<List<Habit>> = dao
-        .getHabitsForSelectedDate(date.toStartOfDayTimeStamp())
-        .map { it.map { habit -> habit.toDomain() } }
+    ): Flow<List<Habit>> {
+        val userId = sessionManager.getUserId()!!
+        return dao
+            .getHabitsForSelectedDate(userId, date.toStartOfDayTimeStamp())
+            .map { it.map { habit -> habit.toDomain() } }
+    }
 
     override suspend fun fetchHabitsFromApi() {
         resultOf {
-            val habits = api.getAllHabits().toDomain()
+            val userId = sessionManager.getUserId()!!
+            val habits = api.getAllHabits(userId).toDomain(userId)
             insertHabits(habits)
         }
     }
 
     override suspend fun insertHabit(habit: Habit) {
         handleAlarm(habit)
+        val userId = sessionManager.getUserId()!!
         dao.insertHabit(habit.toEntity())
         resultOf {
-            api.insertHabit(habit.toDto())
+            api.insertHabit(userId, habit.toDto())
         }.onFailure {
-            dao.insertHabitSync(habit.toHabitSyncEntity())
+            dao.insertHabitSync(habit.toHabitSyncEntity(userId))
         }
     }
 
@@ -60,11 +67,15 @@ class HabitRepositoryImpl(
         }
     }
 
-    override suspend fun getHabitById(habitId: String): Habit = dao.getHabitById(habitId).toDomain()
+    override suspend fun getHabitById(habitId: String): Habit {
+        val userId = sessionManager.getUserId()!!
+        return dao.getHabitById(userId, habitId).toDomain()
+    }
 
     private suspend fun handleAlarm(habit: Habit) {
         try {
-            val habit = dao.getHabitById(habit.id)
+            val userId = sessionManager.getUserId()!!
+            val habit = dao.getHabitById(userId, habit.id)
             alarmHandler.cancel(habit.toDomain())
         } catch (e: Exception) { }
         alarmHandler.setRecurrentAlarm(habit)
