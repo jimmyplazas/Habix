@@ -9,7 +9,7 @@ import dev.alejo.habix.habits.data.local.typeconverter.HomeTypeConverter
 
 @Database(
     entities = [HabitEntity::class, HabitSyncEntity::class],
-    version = 1
+    version = 2
 )
 @TypeConverters(HomeTypeConverter::class)
 abstract class HomeDatabase : RoomDatabase() {
