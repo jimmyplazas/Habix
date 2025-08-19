@@ -28,10 +28,6 @@ class FakeAuthRepository : AuthRepository {
         }
     }
 
-    override fun getUserId(): String? {
-        return "UID"
-    }
-
     override fun logout() {  }
 
 }
