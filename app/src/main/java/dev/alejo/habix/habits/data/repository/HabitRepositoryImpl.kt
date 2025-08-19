@@ -44,7 +44,8 @@ class HabitRepositoryImpl(
     override suspend fun fetchHabitsFromApi() {
         resultOf {
             val userId = sessionManager.getUserId()!!
-            val habits = api.getAllHabits(userId).toDomain(userId)
+            val token = sessionManager.getUserToken()!!
+            val habits = api.getAllHabits(userId = userId, token = token).toDomain(userId)
             insertHabits(habits)
         }
     }
@@ -52,9 +53,10 @@ class HabitRepositoryImpl(
     override suspend fun insertHabit(habit: Habit) {
         handleAlarm(habit)
         val userId = sessionManager.getUserId()!!
+        val token = sessionManager.getUserToken()!!
         dao.insertHabit(habit.toEntity())
         resultOf {
-            api.insertHabit(userId, habit.toDto())
+            api.insertHabit(userId = userId, token = token, habit = habit.toDto())
         }.onFailure {
             dao.insertHabitSync(habit.toHabitSyncEntity(userId))
         }
@@ -77,7 +79,8 @@ class HabitRepositoryImpl(
             val userId = sessionManager.getUserId()!!
             val habit = dao.getHabitById(userId, habit.id)
             alarmHandler.cancel(habit.toDomain())
-        } catch (e: Exception) { }
+        } catch (e: Exception) {
+        }
         alarmHandler.setRecurrentAlarm(habit)
     }
 
