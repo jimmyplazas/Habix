@@ -1,4 +1,4 @@
-package dev.alejo.habix.settings.presentation
+package dev.alejo.settings_presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,8 +10,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import dev.alejo.core_presentation.HabixTopAppBar
-import dev.alejo.habix.settings.presentation.components.SettingsItem
-import dev.alejo.habix.ui.theme.AppDimens
+import dev.alejo.core_ui.theme.AppDimens
+import dev.alejo.settings_presentation.components.SettingsItem
 
 @Composable
 fun SettingsScreen(
