@@ -54,6 +54,7 @@ dependencies {
     implementation(project(":core:core_data"))
     implementation(project(":core:core_ui"))
     implementation(project(":core:core_presentation"))
+    implementation(project(":settings:settings_presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
