@@ -14,7 +14,7 @@ import dev.alejo.habix.authentication.presentation.signup.SignUpScreen
 import dev.alejo.habix.habits.presentation.detail.DetailScreen
 import dev.alejo.habix.habits.presentation.home.HomeScreen
 import dev.alejo.habix.onboarding.presentation.OnboardingScreen
-import dev.alejo.habix.settings.presentation.SettingsScreen
+import dev.alejo.settings_presentation.SettingsScreen
 
 @Composable
 fun NavigationHost(
