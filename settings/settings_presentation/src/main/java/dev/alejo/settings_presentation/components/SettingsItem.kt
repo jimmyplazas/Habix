@@ -1,4 +1,4 @@
-package dev.alejo.habix.settings.presentation.components
+package dev.alejo.settings_presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
