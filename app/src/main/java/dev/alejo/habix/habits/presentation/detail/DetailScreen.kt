@@ -29,13 +29,13 @@ import com.maxkeppeker.sheets.core.models.base.rememberUseCaseState
 import com.maxkeppeler.sheets.clock.ClockDialog
 import com.maxkeppeler.sheets.clock.models.ClockConfig
 import com.maxkeppeler.sheets.clock.models.ClockSelection
-import dev.alejo.habix.core.presentation.HabixBackground
-import dev.alejo.habix.core.presentation.HabixFloatingActionButton
-import dev.alejo.habix.core.presentation.HabixTextField
-import dev.alejo.habix.core.presentation.HabixTopAppBar
+import dev.alejo.core_presentation.HabixBackground
+import dev.alejo.core_presentation.HabixFloatingActionButton
+import dev.alejo.core_presentation.HabixTextField
+import dev.alejo.core_presentation.HabixTopAppBar
+import dev.alejo.core_ui.theme.AppDimens
 import dev.alejo.habix.habits.presentation.detail.components.DetailFrequency
 import dev.alejo.habix.habits.presentation.detail.components.DetailReminder
-import dev.alejo.habix.ui.theme.AppDimens
 import java.time.LocalTime
 
 @OptIn(ExperimentalMaterial3Api::class)

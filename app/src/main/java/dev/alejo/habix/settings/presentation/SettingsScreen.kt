@@ -9,7 +9,7 @@ import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import dev.alejo.habix.core.presentation.HabixTopAppBar
+import dev.alejo.core_presentation.HabixTopAppBar
 import dev.alejo.habix.settings.presentation.components.SettingsItem
 import dev.alejo.habix.ui.theme.AppDimens
 

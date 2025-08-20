@@ -11,9 +11,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import dev.alejo.core_ui.theme.AppDimens
+import dev.alejo.core_ui.theme.Background
 import dev.alejo.habix.R
-import dev.alejo.habix.ui.theme.AppDimens
-import dev.alejo.habix.ui.theme.Background
 
 @Composable
 fun LoginBackground() {

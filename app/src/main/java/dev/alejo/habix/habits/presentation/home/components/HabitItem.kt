@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import dev.alejo.habix.core.presentation.HabixCheckBox
+import dev.alejo.core_presentation.HabixCheckBox
 import dev.alejo.habix.habits.domain.model.Habit
 import dev.alejo.habix.ui.theme.AppDimens
 import java.time.LocalDate

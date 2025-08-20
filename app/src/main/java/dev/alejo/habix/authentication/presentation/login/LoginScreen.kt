@@ -15,9 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import dev.alejo.core_presentation.HabixTitle
 import dev.alejo.habix.authentication.presentation.login.components.LoginBackground
 import dev.alejo.habix.authentication.presentation.login.components.LoginForm
-import dev.alejo.habix.core.presentation.HabixTitle
 
 @Composable
 fun LoginScreen(

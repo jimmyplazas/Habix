@@ -1,4 +1,4 @@
-package dev.alejo.habix.core.session
+package dev.alejo.core_data.session
 
 interface SessionManager {
     fun getUserId(): String?

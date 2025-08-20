@@ -19,9 +19,9 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import dev.alejo.core_presentation.HabixTitle
 import dev.alejo.habix.R
 import dev.alejo.habix.authentication.presentation.signup.components.SignUpForm
-import dev.alejo.habix.core.presentation.HabixTitle
 
 @Composable
 fun SignUpScreen(

@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
-import dev.alejo.habix.core.presentation.HabixButton
+import dev.alejo.core_presentation.HabixButton
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable

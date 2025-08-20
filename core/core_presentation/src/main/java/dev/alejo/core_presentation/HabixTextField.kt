@@ -1,4 +1,4 @@
-package dev.alejo.habix.core.presentation
+package dev.alejo.core_presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -29,7 +29,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
-import dev.alejo.habix.ui.theme.AppDimens
+import dev.alejo.core_ui.theme.AppDimens
 
 @Composable
 fun HabixPasswordTextField(

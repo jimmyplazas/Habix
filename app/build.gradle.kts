@@ -14,12 +14,12 @@ plugins {
 
 android {
     namespace = "dev.alejo.habix"
-    compileSdk = 36
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "dev.alejo.habix"
-        minSdk = 30
-        targetSdk = 36
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -50,6 +50,10 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":core:core_data"))
+    implementation(project(":core:core_ui"))
+    implementation(project(":core:core_presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

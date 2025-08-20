@@ -6,7 +6,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.alejo.habix.core.session.SessionManager
+import dev.alejo.core_data.session.SessionManager
 import dev.alejo.habix.habits.domain.model.Habit
 import dev.alejo.habix.habits.domain.usecase.detail.DetailUseCases
 import kotlinx.coroutines.channels.Channel

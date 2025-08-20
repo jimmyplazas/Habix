@@ -15,7 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import dev.alejo.habix.ui.theme.AppDimens
+import dev.alejo.core_ui.theme.AppDimens
 import java.time.DayOfWeek
 
 @Composable

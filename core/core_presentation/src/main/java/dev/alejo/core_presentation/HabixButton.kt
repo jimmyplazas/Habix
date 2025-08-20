@@ -1,4 +1,4 @@
-package dev.alejo.habix.core.presentation
+package dev.alejo.core_presentation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -8,7 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import dev.alejo.habix.ui.theme.AppDimens
+import dev.alejo.core_ui.theme.AppDimens
 
 @Composable
 fun HabixButton(

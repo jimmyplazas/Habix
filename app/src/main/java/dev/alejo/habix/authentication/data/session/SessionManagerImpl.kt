@@ -2,7 +2,7 @@ package dev.alejo.habix.authentication.data.session
 
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import dev.alejo.habix.core.session.SessionManager
+import dev.alejo.core_data.session.SessionManager
 import kotlinx.coroutines.tasks.await
 
 class SessionManagerImpl : SessionManager {

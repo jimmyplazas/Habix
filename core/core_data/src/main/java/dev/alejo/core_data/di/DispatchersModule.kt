@@ -1,4 +1,4 @@
-package dev.alejo.habix.core.di
+package dev.alejo.core_data.di
 
 import dagger.Module
 import dagger.Provides

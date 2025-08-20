@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dev.alejo.core_data.session.SessionManager
 import dev.alejo.habix.authentication.data.matcher.EmailMatcherImpl
 import dev.alejo.habix.authentication.data.repository.AuthRepositoryImpl
 import dev.alejo.habix.authentication.data.session.SessionManagerImpl
@@ -17,7 +18,6 @@ import dev.alejo.habix.authentication.domain.usecase.SignUpUseCases
 import dev.alejo.habix.authentication.domain.usecase.SignUpWithEmailUseCase
 import dev.alejo.habix.authentication.domain.usecase.ValidateEmailUseCase
 import dev.alejo.habix.authentication.domain.usecase.ValidatePasswordUseCase
-import dev.alejo.habix.core.session.SessionManager
 import javax.inject.Singleton
 
 @Module

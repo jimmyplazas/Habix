@@ -25,12 +25,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.withStyle
+import dev.alejo.core_presentation.HabixButton
+import dev.alejo.core_presentation.HabixPasswordTextField
+import dev.alejo.core_presentation.HabixTextField
+import dev.alejo.core_ui.theme.AppDimens
 import dev.alejo.habix.authentication.presentation.signup.SignUpEvent
 import dev.alejo.habix.authentication.presentation.signup.SignUpState
-import dev.alejo.habix.core.presentation.HabixButton
-import dev.alejo.habix.core.presentation.HabixPasswordTextField
-import dev.alejo.habix.core.presentation.HabixTextField
-import dev.alejo.habix.ui.theme.AppDimens
 
 @Composable
 fun SignUpForm(

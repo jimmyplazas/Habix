@@ -30,12 +30,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import dev.alejo.core_presentation.HabixButton
+import dev.alejo.core_presentation.HabixPasswordTextField
+import dev.alejo.core_presentation.HabixTextField
+import dev.alejo.core_ui.theme.AppDimens
 import dev.alejo.habix.authentication.presentation.login.LoginEvent
 import dev.alejo.habix.authentication.presentation.login.LoginState
-import dev.alejo.habix.core.presentation.HabixButton
-import dev.alejo.habix.core.presentation.HabixPasswordTextField
-import dev.alejo.habix.core.presentation.HabixTextField
-import dev.alejo.habix.ui.theme.AppDimens
 
 @Composable
 fun LoginForm(

@@ -6,7 +6,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import dev.alejo.habix.core.session.SessionManager
+import dev.alejo.core_data.session.SessionManager
 import dev.alejo.habix.habits.data.extension.toStartOfDayTimeStamp
 import dev.alejo.habix.habits.data.local.HomeDao
 import dev.alejo.habix.habits.data.mapper.toDomain

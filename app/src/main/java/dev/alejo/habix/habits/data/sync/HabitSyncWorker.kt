@@ -6,7 +6,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import dev.alejo.habix.core.session.SessionManager
+import dev.alejo.core_data.session.SessionManager
 import dev.alejo.habix.habits.data.local.HomeDao
 import dev.alejo.habix.habits.data.local.entity.HabitSyncEntity
 import dev.alejo.habix.habits.data.mapper.toDomain

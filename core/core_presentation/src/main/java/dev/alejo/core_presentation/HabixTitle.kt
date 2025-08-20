@@ -1,4 +1,4 @@
-package dev.alejo.habix.core.presentation
+package dev.alejo.core_presentation
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text

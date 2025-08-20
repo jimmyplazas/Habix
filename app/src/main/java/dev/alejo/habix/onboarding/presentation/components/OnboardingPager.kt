@@ -32,11 +32,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import dev.alejo.core_presentation.HabixButton
+import dev.alejo.core_presentation.HabixTitle
+import dev.alejo.core_ui.theme.AppDimens
 import dev.alejo.habix.R
-import dev.alejo.habix.core.presentation.HabixButton
-import dev.alejo.habix.core.presentation.HabixTitle
 import dev.alejo.habix.onboarding.presentation.OnboardingPagerInformation
-import dev.alejo.habix.ui.theme.AppDimens
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

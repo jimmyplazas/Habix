@@ -25,10 +25,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import dev.alejo.core_presentation.HabixBackground
+import dev.alejo.core_presentation.HabixFloatingActionButton
+import dev.alejo.core_presentation.HabixTopAppBar
 import dev.alejo.habix.R
-import dev.alejo.habix.core.presentation.HabixBackground
-import dev.alejo.habix.core.presentation.HabixFloatingActionButton
-import dev.alejo.habix.core.presentation.HabixTopAppBar
 import dev.alejo.habix.habits.presentation.home.components.HabitItem
 import dev.alejo.habix.habits.presentation.home.components.HomeAskPermission
 import dev.alejo.habix.habits.presentation.home.components.HomeDateSelector
