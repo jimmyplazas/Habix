@@ -1,11 +1,10 @@
-package dev.alejo.habix.onboarding.presentation
+package dev.alejo.onboarding_presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import dev.alejo.habix.R
-import dev.alejo.habix.onboarding.presentation.components.OnboardingPager
+import dev.alejo.onboarding_presentation.components.OnboardingPager
 
 @Composable
 fun OnboardingScreen(
