@@ -1,8 +1,8 @@
-package dev.alejo.habix.onboarding.data.repository
+package dev.alejo.onboarding_data.repository
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import dev.alejo.habix.onboarding.domain.repository.OnboardingRepository
+import dev.alejo.onboarding_domain.repository.OnboardingRepository
 
 class OnboardingRepositoryImpl(
     private val prefs: SharedPreferences
