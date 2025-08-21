@@ -1,4 +1,4 @@
-package dev.alejo.habix.onboarding.di
+package dev.alejo.onboarding_data.di
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,10 +7,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import dev.alejo.habix.onboarding.data.repository.OnboardingRepositoryImpl
-import dev.alejo.habix.onboarding.domain.repository.OnboardingRepository
-import dev.alejo.habix.onboarding.domain.usecase.CompleteOnboardingUseCase
-import dev.alejo.habix.onboarding.domain.usecase.HasSeenOnboardingUseCase
+import dev.alejo.onboarding_data.repository.OnboardingRepositoryImpl
+import dev.alejo.onboarding_domain.repository.OnboardingRepository
+import dev.alejo.onboarding_domain.usecase.CompleteOnboardingUseCase
+import dev.alejo.onboarding_domain.usecase.HasSeenOnboardingUseCase
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
