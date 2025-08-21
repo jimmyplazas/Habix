@@ -1,4 +1,4 @@
-package dev.alejo.habix.onboarding.presentation.components
+package dev.alejo.onboarding_presentation.components
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
@@ -35,8 +35,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import dev.alejo.core_presentation.HabixButton
 import dev.alejo.core_presentation.HabixTitle
 import dev.alejo.core_ui.theme.AppDimens
-import dev.alejo.habix.R
-import dev.alejo.habix.onboarding.presentation.OnboardingPagerInformation
+import dev.alejo.onboarding_presentation.OnboardingPagerInformation
+import dev.alejo.onboarding_presentation.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
