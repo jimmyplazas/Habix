@@ -55,6 +55,9 @@ dependencies {
     implementation(project(":core:core_ui"))
     implementation(project(":core:core_presentation"))
     implementation(project(":settings:settings_presentation"))
+    implementation(project(":onboarding:onboarding_data"))
+    implementation(project(":onboarding:onboarding_domain"))
+    implementation(project(":onboarding:onboarding_presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
