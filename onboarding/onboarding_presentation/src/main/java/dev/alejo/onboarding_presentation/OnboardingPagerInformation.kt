@@ -1,4 +1,4 @@
-package dev.alejo.habix.onboarding.presentation
+package dev.alejo.onboarding_presentation
 
 import androidx.annotation.DrawableRes
 
