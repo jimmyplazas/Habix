@@ -1,12 +1,12 @@
-package dev.alejo.habix.onboarding.presentation
+package dev.alejo.onboarding_presentation
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.alejo.habix.onboarding.domain.usecase.CompleteOnboardingUseCase
-import dev.alejo.habix.onboarding.domain.usecase.HasSeenOnboardingUseCase
+import dev.alejo.onboarding_domain.usecase.CompleteOnboardingUseCase
+import dev.alejo.onboarding_domain.usecase.HasSeenOnboardingUseCase
 import javax.inject.Inject
 
 @HiltViewModel
