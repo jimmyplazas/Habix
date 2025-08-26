@@ -1,4 +1,4 @@
-package dev.alejo.habix.authentication.domain.matcher
+package dev.alejo.authentication_domain.matcher
 
 interface EmailMatcher {
     fun isValid(email: String): Boolean
