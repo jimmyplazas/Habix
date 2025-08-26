@@ -1,6 +1,6 @@
-package dev.alejo.habix.authentication.presentation.util
+package dev.alejo.authentication_presentation.util
 
-import dev.alejo.habix.authentication.domain.usecase.PasswordResult
+import dev.alejo.authentication_domain.usecase.PasswordResult
 
 object PasswordParser {
     fun fromValidationResult(error: PasswordResult): String? = when (error) {
