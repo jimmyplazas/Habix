@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import dagger.hilt.android.AndroidEntryPoint
-import dev.alejo.core_data.session.SessionManager
+import dev.alejo.core_domain.session.SessionManager
 import dev.alejo.habix.habits.data.extension.goAsync
 import dev.alejo.habix.habits.data.local.HomeDao
 import dev.alejo.habix.habits.data.mapper.toDomain
