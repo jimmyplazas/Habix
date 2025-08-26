@@ -1,4 +1,4 @@
-package dev.alejo.habix.authentication.presentation.login.components
+package dev.alejo.authentication_presentation.login.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -11,9 +11,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import dev.alejo.authentication_presentation.R
 import dev.alejo.core_ui.theme.AppDimens
 import dev.alejo.core_ui.theme.Background
-import dev.alejo.habix.R
 
 @Composable
 fun LoginBackground() {
