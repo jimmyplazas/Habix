@@ -1,6 +1,6 @@
-package dev.alejo.habix.authentication.domain.usecase
+package dev.alejo.authentication_domain.usecase
 
-import dev.alejo.habix.authentication.domain.repository.AuthRepository
+import dev.alejo.authentication_domain.repository.AuthRepository
 
 class SignUpWithEmailUseCase(
     private val repository: AuthRepository

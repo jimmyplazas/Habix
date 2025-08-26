@@ -1,4 +1,4 @@
-package dev.alejo.habix.authentication.presentation.signup.components
+package dev.alejo.authentication_presentation.signup.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,8 +29,8 @@ import dev.alejo.core_presentation.HabixButton
 import dev.alejo.core_presentation.HabixPasswordTextField
 import dev.alejo.core_presentation.HabixTextField
 import dev.alejo.core_ui.theme.AppDimens
-import dev.alejo.habix.authentication.presentation.signup.SignUpEvent
-import dev.alejo.habix.authentication.presentation.signup.SignUpState
+import dev.alejo.authentication_presentation.signup.SignUpEvent
+import dev.alejo.authentication_presentation.signup.SignUpState
 
 @Composable
 fun SignUpForm(

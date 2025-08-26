@@ -1,4 +1,4 @@
-package dev.alejo.habix.authentication.presentation.signup
+package dev.alejo.authentication_presentation.signup
 
 sealed class SignUpEffect {
     object NavigateToHome : SignUpEffect()
