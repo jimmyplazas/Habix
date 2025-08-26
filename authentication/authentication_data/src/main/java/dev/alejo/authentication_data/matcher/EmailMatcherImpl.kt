@@ -1,7 +1,7 @@
-package dev.alejo.habix.authentication.data.matcher
+package dev.alejo.authentication_data.matcher
 
 import android.util.Patterns
-import dev.alejo.habix.authentication.domain.matcher.EmailMatcher
+import dev.alejo.authentication_domain.matcher.EmailMatcher
 
 class EmailMatcherImpl : EmailMatcher {
     override fun isValid(
