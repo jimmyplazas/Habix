@@ -1,6 +1,6 @@
-package dev.alejo.habix.authentication.domain.usecase
+package dev.alejo.authentication_domain.usecase
 
-import dev.alejo.habix.authentication.domain.matcher.EmailMatcher
+import dev.alejo.authentication_domain.matcher.EmailMatcher
 
 class ValidateEmailUseCase(
     private val emailMatcher: EmailMatcher
