@@ -1,8 +1,8 @@
-package dev.alejo.habix.authentication.data.repository
+package dev.alejo.authentication_data.repository
 
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import dev.alejo.habix.authentication.domain.repository.AuthRepository
+import dev.alejo.authentication_domain.repository.AuthRepository
 import kotlinx.coroutines.tasks.await
 
 class AuthRepositoryImpl : AuthRepository {
