@@ -1,12 +1,12 @@
-package dev.alejo.habix.authentication.presentation.login
+package dev.alejo.authentication_presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.alejo.authentication_domain.usecase.LoginUseCases
+import dev.alejo.authentication_domain.usecase.PasswordResult
+import dev.alejo.authentication_presentation.util.PasswordParser
 import dev.alejo.core_data.di.IoDispatcher
-import dev.alejo.habix.authentication.domain.usecase.LoginUseCases
-import dev.alejo.habix.authentication.domain.usecase.PasswordResult
-import dev.alejo.habix.authentication.presentation.util.PasswordParser
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow

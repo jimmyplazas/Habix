@@ -1,4 +1,4 @@
-package dev.alejo.habix.authentication.presentation.login
+package dev.alejo.authentication_presentation.login
 
 sealed class LoginEvent {
     data class EmailChange(val email: String) : LoginEvent()

@@ -1,4 +1,4 @@
-package dev.alejo.habix.authentication.presentation.login
+package dev.alejo.authentication_presentation.login
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import dev.alejo.core_presentation.HabixTitle
-import dev.alejo.habix.authentication.presentation.login.components.LoginBackground
-import dev.alejo.habix.authentication.presentation.login.components.LoginForm
+import dev.alejo.authentication_presentation.login.components.LoginBackground
+import dev.alejo.authentication_presentation.login.components.LoginForm
 
 @Composable
 fun LoginScreen(

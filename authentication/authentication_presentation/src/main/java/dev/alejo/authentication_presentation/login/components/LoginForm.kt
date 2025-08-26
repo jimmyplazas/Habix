@@ -1,4 +1,4 @@
-package dev.alejo.habix.authentication.presentation.login.components
+package dev.alejo.authentication_presentation.login.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -34,8 +34,8 @@ import dev.alejo.core_presentation.HabixButton
 import dev.alejo.core_presentation.HabixPasswordTextField
 import dev.alejo.core_presentation.HabixTextField
 import dev.alejo.core_ui.theme.AppDimens
-import dev.alejo.habix.authentication.presentation.login.LoginEvent
-import dev.alejo.habix.authentication.presentation.login.LoginState
+import dev.alejo.authentication_presentation.login.LoginEvent
+import dev.alejo.authentication_presentation.login.LoginState
 
 @Composable
 fun LoginForm(

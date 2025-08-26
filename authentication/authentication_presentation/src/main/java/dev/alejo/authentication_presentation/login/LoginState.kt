@@ -1,4 +1,4 @@
-package dev.alejo.habix.authentication.presentation.login
+package dev.alejo.authentication_presentation.login
 
 data class LoginState(
     val email: String = "",
