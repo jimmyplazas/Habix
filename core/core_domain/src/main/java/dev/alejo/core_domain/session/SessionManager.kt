@@ -1,4 +1,4 @@
-package dev.alejo.core_data.session
+package dev.alejo.core_domain.session
 
 interface SessionManager {
     fun getUserId(): String?
