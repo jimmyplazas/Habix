@@ -8,7 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import dev.alejo.core_data.session.SessionManager
+import dev.alejo.core_domain.session.SessionManager
 import dev.alejo.habix.habits.data.alarm.AlarmHandlerImpl
 import dev.alejo.habix.habits.data.local.HomeDao
 import dev.alejo.habix.habits.data.local.HomeDatabase
