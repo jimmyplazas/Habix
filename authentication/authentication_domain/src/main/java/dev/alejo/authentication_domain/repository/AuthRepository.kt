@@ -1,4 +1,4 @@
-package dev.alejo.habix.authentication.domain.repository
+package dev.alejo.authentication_domain.repository
 
 interface AuthRepository {
     suspend fun login(email: String, password: String): Result<Unit>
