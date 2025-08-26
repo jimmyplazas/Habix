@@ -52,12 +52,16 @@ android {
 dependencies {
 
     implementation(project(":core:core_data"))
+    implementation(project(":core:core_domain"))
     implementation(project(":core:core_ui"))
     implementation(project(":core:core_presentation"))
     implementation(project(":settings:settings_presentation"))
     implementation(project(":onboarding:onboarding_data"))
     implementation(project(":onboarding:onboarding_domain"))
     implementation(project(":onboarding:onboarding_presentation"))
+    implementation(project(":authentication:authentication_data"))
+    implementation(project(":authentication:authentication_domain"))
+    implementation(project(":authentication:authentication_presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
