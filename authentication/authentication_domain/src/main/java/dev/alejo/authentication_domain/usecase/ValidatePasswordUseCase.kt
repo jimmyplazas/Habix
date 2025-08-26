@@ -1,4 +1,4 @@
-package dev.alejo.habix.authentication.domain.usecase
+package dev.alejo.authentication_domain.usecase
 
 class ValidatePasswordUseCase {
     operator fun invoke(password: String): PasswordResult {
