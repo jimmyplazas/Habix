@@ -1,23 +1,23 @@
-package dev.alejo.habix.authentication.di
+package dev.alejo.authentication_data.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.alejo.core_data.session.SessionManager
-import dev.alejo.habix.authentication.data.matcher.EmailMatcherImpl
-import dev.alejo.habix.authentication.data.repository.AuthRepositoryImpl
-import dev.alejo.habix.authentication.data.session.SessionManagerImpl
-import dev.alejo.habix.authentication.domain.matcher.EmailMatcher
-import dev.alejo.habix.authentication.domain.repository.AuthRepository
-import dev.alejo.habix.authentication.domain.usecase.GetUserIdUseCase
-import dev.alejo.habix.authentication.domain.usecase.LoginUseCases
-import dev.alejo.habix.authentication.domain.usecase.LoginWithEmailUseCase
-import dev.alejo.habix.authentication.domain.usecase.SignOutUseCase
-import dev.alejo.habix.authentication.domain.usecase.SignUpUseCases
-import dev.alejo.habix.authentication.domain.usecase.SignUpWithEmailUseCase
-import dev.alejo.habix.authentication.domain.usecase.ValidateEmailUseCase
-import dev.alejo.habix.authentication.domain.usecase.ValidatePasswordUseCase
+import dev.alejo.authentication_data.matcher.EmailMatcherImpl
+import dev.alejo.authentication_data.repository.AuthRepositoryImpl
+import dev.alejo.authentication_data.session.SessionManagerImpl
+import dev.alejo.authentication_domain.matcher.EmailMatcher
+import dev.alejo.authentication_domain.repository.AuthRepository
+import dev.alejo.authentication_domain.usecase.GetUserIdUseCase
+import dev.alejo.authentication_domain.usecase.LoginUseCases
+import dev.alejo.authentication_domain.usecase.LoginWithEmailUseCase
+import dev.alejo.authentication_domain.usecase.SignOutUseCase
+import dev.alejo.authentication_domain.usecase.SignUpUseCases
+import dev.alejo.authentication_domain.usecase.SignUpWithEmailUseCase
+import dev.alejo.authentication_domain.usecase.ValidateEmailUseCase
+import dev.alejo.authentication_domain.usecase.ValidatePasswordUseCase
+import dev.alejo.core_domain.session.SessionManager
 import javax.inject.Singleton
 
 @Module
