@@ -1,6 +1,6 @@
-package dev.alejo.habix.authentication.domain.usecase
+package dev.alejo.authentication_domain.usecase
 
-import dev.alejo.core_data.session.SessionManager
+import dev.alejo.core_domain.session.SessionManager
 
 class GetUserIdUseCase(
     private val sessionManager: SessionManager
