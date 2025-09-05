@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.data.extension
+package dev.alejo.habits_data.extension
 
 import java.time.Instant
 import java.time.LocalDate
