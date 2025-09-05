@@ -1,7 +1,7 @@
-package dev.alejo.habix.habits.domain.usecase.detail
+package dev.alejo.habits_domain.usecase.detail
 
-import dev.alejo.habix.habits.domain.model.Habit
-import dev.alejo.habix.habits.domain.repository.HabitRepository
+import dev.alejo.habits_domain.model.Habit
+import dev.alejo.habits_domain.repository.HabitRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
