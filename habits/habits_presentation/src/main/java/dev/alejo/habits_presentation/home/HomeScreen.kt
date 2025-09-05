@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.presentation.home
+package dev.alejo.habits_presentation.home
 
 import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
@@ -28,12 +28,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import dev.alejo.core_presentation.HabixBackground
 import dev.alejo.core_presentation.HabixFloatingActionButton
 import dev.alejo.core_presentation.HabixTopAppBar
-import dev.alejo.habix.R
-import dev.alejo.habix.habits.presentation.home.components.HabitItem
-import dev.alejo.habix.habits.presentation.home.components.HomeAskPermission
-import dev.alejo.habix.habits.presentation.home.components.HomeDateSelector
-import dev.alejo.habix.habits.presentation.home.components.HomeQuote
-import dev.alejo.habix.ui.theme.AppDimens
+import dev.alejo.core_ui.theme.AppDimens
+import dev.alejo.habits_presentation.R
+import dev.alejo.habits_presentation.home.components.HabitItem
+import dev.alejo.habits_presentation.home.components.HomeAskPermission
+import dev.alejo.habits_presentation.home.components.HomeDateSelector
+import dev.alejo.habits_presentation.home.components.HomeQuote
 import java.time.ZonedDateTime
 
 @Composable
