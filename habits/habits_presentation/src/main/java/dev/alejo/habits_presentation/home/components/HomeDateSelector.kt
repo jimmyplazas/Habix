@@ -1,10 +1,10 @@
-package dev.alejo.habix.habits.presentation.home.components
+package dev.alejo.habits_presentation.home.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import dev.alejo.habix.ui.theme.AppDimens
+import dev.alejo.core_ui.theme.AppDimens
 import java.time.ZonedDateTime
 
 @Composable
