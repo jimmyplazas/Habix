@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.data.alarm
+package dev.alejo.habits_data.alarm
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -7,11 +7,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import dagger.hilt.android.AndroidEntryPoint
-import dev.alejo.habix.R
-import dev.alejo.habix.habits.data.extension.goAsync
-import dev.alejo.habix.habits.domain.alarm.AlarmHandler
-import dev.alejo.habix.habits.domain.model.Habit
-import dev.alejo.habix.habits.domain.repository.HabitRepository
+import dev.alejo.habits_data.R
+import dev.alejo.habits_data.extension.goAsync
+import dev.alejo.habits_domain.alarm.AlarmHandler
+import dev.alejo.habits_domain.model.Habit
+import dev.alejo.habits_domain.repository.HabitRepository
 import java.time.LocalDate
 import javax.inject.Inject
 
