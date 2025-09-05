@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.data.remote.dto
+package dev.alejo.habits_data.remote.dto
 
 data class HabitDto(
     val name: String,
