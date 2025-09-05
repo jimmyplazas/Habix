@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.data.local.typeconverter
+package dev.alejo.habits_data.local.typeconverter
 
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
