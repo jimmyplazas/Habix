@@ -1,6 +1,6 @@
-package dev.alejo.habix.habits.domain.repository
+package dev.alejo.habits_domain.repository
 
-import dev.alejo.habix.habits.domain.model.Habit
+import dev.alejo.habits_domain.model.Habit
 import kotlinx.coroutines.flow.Flow
 import java.time.ZonedDateTime
 
