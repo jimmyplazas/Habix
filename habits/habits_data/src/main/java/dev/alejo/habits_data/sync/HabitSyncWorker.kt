@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.data.sync
+package dev.alejo.habits_data.sync
 
 import android.content.Context
 import androidx.hilt.work.HiltWorker
@@ -7,12 +7,12 @@ import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import dev.alejo.core_domain.session.SessionManager
-import dev.alejo.habix.habits.data.local.HomeDao
-import dev.alejo.habix.habits.data.local.entity.HabitSyncEntity
-import dev.alejo.habix.habits.data.mapper.toDomain
-import dev.alejo.habix.habits.data.mapper.toDto
-import dev.alejo.habix.habits.data.remote.ApiService
-import dev.alejo.habix.habits.data.remote.util.resultOf
+import dev.alejo.habits_data.local.HomeDao
+import dev.alejo.habits_data.local.entity.HabitSyncEntity
+import dev.alejo.habits_data.mapper.toDomain
+import dev.alejo.habits_data.mapper.toDto
+import dev.alejo.habits_data.remote.ApiService
+import dev.alejo.habits_data.remote.util.resultOf
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 
