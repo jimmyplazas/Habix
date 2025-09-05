@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.domain.usecase.detail
+package dev.alejo.habits_domain.usecase.detail
 
 data class DetailUseCases(
     val getHabitByIdUseCase: GetHabitByIdUseCase,
