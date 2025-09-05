@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.data.local.entity
+package dev.alejo.habits_data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
