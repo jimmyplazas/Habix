@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.presentation.detail
+package dev.alejo.habits_presentation.detail
 
 import java.time.DayOfWeek
 import java.time.LocalDate
