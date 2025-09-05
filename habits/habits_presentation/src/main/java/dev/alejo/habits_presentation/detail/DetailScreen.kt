@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.presentation.detail
+package dev.alejo.habits_presentation.detail
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Arrangement
@@ -34,8 +34,8 @@ import dev.alejo.core_presentation.HabixFloatingActionButton
 import dev.alejo.core_presentation.HabixTextField
 import dev.alejo.core_presentation.HabixTopAppBar
 import dev.alejo.core_ui.theme.AppDimens
-import dev.alejo.habix.habits.presentation.detail.components.DetailFrequency
-import dev.alejo.habix.habits.presentation.detail.components.DetailReminder
+import dev.alejo.habits_presentation.detail.components.DetailFrequency
+import dev.alejo.habits_presentation.detail.components.DetailReminder
 import java.time.LocalTime
 
 @OptIn(ExperimentalMaterial3Api::class)
