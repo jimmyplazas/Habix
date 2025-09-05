@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.data.extension
+package dev.alejo.habits_data.extension
 
 import android.content.BroadcastReceiver
 import kotlinx.coroutines.CoroutineScope
