@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.presentation.detail
+package dev.alejo.habits_presentation.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,8 +7,8 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.alejo.core_domain.session.SessionManager
-import dev.alejo.habix.habits.domain.model.Habit
-import dev.alejo.habix.habits.domain.usecase.detail.DetailUseCases
+import dev.alejo.habits_domain.model.Habit
+import dev.alejo.habits_domain.usecase.detail.DetailUseCases
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
