@@ -8,7 +8,6 @@ plugins {
     alias(libs.plugins.crashlytics)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.kotlin.serialization)
-    //alias(libs.plugins.ksp)
     id("kotlin-kapt")
 }
 
@@ -62,6 +61,9 @@ dependencies {
     implementation(project(":authentication:authentication_data"))
     implementation(project(":authentication:authentication_domain"))
     implementation(project(":authentication:authentication_presentation"))
+    implementation(project(":habits:habits_data"))
+    implementation(project(":habits:habits_domain"))
+    implementation(project(":habits:habits_presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
