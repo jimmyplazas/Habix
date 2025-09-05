@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.presentation.home.components
+package dev.alejo.habits_presentation.home.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -24,8 +24,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import dev.alejo.habix.R
-import dev.alejo.habix.ui.theme.AppDimens
+import dev.alejo.core_ui.theme.AppDimens
+import dev.alejo.habits_presentation.R
 
 @Composable
 fun HomeQuote(
