@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.presentation.home.components
+package dev.alejo.habits_presentation.home.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,8 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import dev.alejo.core_presentation.HabixCheckBox
-import dev.alejo.habix.habits.domain.model.Habit
-import dev.alejo.habix.ui.theme.AppDimens
+import dev.alejo.core_ui.theme.AppDimens
+import dev.alejo.habits_domain.model.Habit
 import java.time.LocalDate
 
 @Composable
