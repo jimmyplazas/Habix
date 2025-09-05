@@ -1,13 +1,13 @@
-package dev.alejo.habix.habits.data.mapper
+package dev.alejo.habits_data.mapper
 
-import dev.alejo.habix.habits.data.extension.toStartOfDayTimeStamp
-import dev.alejo.habix.habits.data.extension.toTimeStamp
-import dev.alejo.habix.habits.data.extension.toZonedDateTime
-import dev.alejo.habix.habits.data.local.entity.HabitEntity
-import dev.alejo.habix.habits.data.local.entity.HabitSyncEntity
-import dev.alejo.habix.habits.data.remote.dto.HabitDto
-import dev.alejo.habix.habits.data.remote.dto.HabitResponse
-import dev.alejo.habix.habits.domain.model.Habit
+import dev.alejo.habits_data.extension.toStartOfDayTimeStamp
+import dev.alejo.habits_data.extension.toTimeStamp
+import dev.alejo.habits_data.extension.toZonedDateTime
+import dev.alejo.habits_data.local.entity.HabitEntity
+import dev.alejo.habits_data.local.entity.HabitSyncEntity
+import dev.alejo.habits_data.remote.dto.HabitDto
+import dev.alejo.habits_data.remote.dto.HabitResponse
+import dev.alejo.habits_domain.model.Habit
 import java.time.DayOfWeek
 
 fun HabitEntity.toDomain(): Habit = Habit(
