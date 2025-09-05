@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.data.remote.util
+package dev.alejo.habits_data.remote.util
 
 suspend inline fun <T> resultOf(
     block: suspend () -> T
