@@ -11,8 +11,8 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
 import dev.alejo.authentication_presentation.login.LoginScreen
 import dev.alejo.authentication_presentation.signup.SignUpScreen
-import dev.alejo.habix.habits.presentation.detail.DetailScreen
-import dev.alejo.habix.habits.presentation.home.HomeScreen
+import dev.alejo.habits_presentation.detail.DetailScreen
+import dev.alejo.habits_presentation.home.HomeScreen
 import dev.alejo.onboarding_presentation.OnboardingScreen
 import dev.alejo.settings_presentation.SettingsScreen
 
