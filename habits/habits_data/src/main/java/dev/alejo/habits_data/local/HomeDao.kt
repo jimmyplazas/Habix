@@ -1,12 +1,12 @@
-package dev.alejo.habix.habits.data.local
+package dev.alejo.habits_data.local
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import dev.alejo.habix.habits.data.local.entity.HabitEntity
-import dev.alejo.habix.habits.data.local.entity.HabitSyncEntity
+import dev.alejo.habits_data.local.entity.HabitEntity
+import dev.alejo.habits_data.local.entity.HabitSyncEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
