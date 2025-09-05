@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.presentation.home.components
+package dev.alejo.habits_presentation.home.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.AlertDialog
