@@ -1,6 +1,6 @@
-package dev.alejo.habix.habits.domain.usecase.home
+package dev.alejo.habits_domain.usecase.home
 
-import dev.alejo.habix.habits.domain.repository.HabitRepository
+import dev.alejo.habits_domain.repository.HabitRepository
 
 class HomeHabitSyncUseCase(
     private val repository: HabitRepository
