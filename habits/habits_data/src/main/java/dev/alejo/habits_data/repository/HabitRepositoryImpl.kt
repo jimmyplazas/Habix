@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.data.repository
+package dev.alejo.habits_data.repository
 
 import androidx.work.BackoffPolicy
 import androidx.work.Constraints
@@ -7,18 +7,18 @@ import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import dev.alejo.core_domain.session.SessionManager
-import dev.alejo.habix.habits.data.extension.toStartOfDayTimeStamp
-import dev.alejo.habix.habits.data.local.HomeDao
-import dev.alejo.habix.habits.data.mapper.toDomain
-import dev.alejo.habix.habits.data.mapper.toDto
-import dev.alejo.habix.habits.data.mapper.toEntity
-import dev.alejo.habix.habits.data.mapper.toHabitSyncEntity
-import dev.alejo.habix.habits.data.remote.ApiService
-import dev.alejo.habix.habits.data.remote.util.resultOf
-import dev.alejo.habix.habits.data.sync.HabitSyncWorker
-import dev.alejo.habix.habits.domain.alarm.AlarmHandler
-import dev.alejo.habix.habits.domain.model.Habit
-import dev.alejo.habix.habits.domain.repository.HabitRepository
+import dev.alejo.habits_data.extension.toStartOfDayTimeStamp
+import dev.alejo.habits_data.local.HomeDao
+import dev.alejo.habits_data.mapper.toDomain
+import dev.alejo.habits_data.mapper.toDto
+import dev.alejo.habits_data.mapper.toEntity
+import dev.alejo.habits_data.mapper.toHabitSyncEntity
+import dev.alejo.habits_data.remote.ApiService
+import dev.alejo.habits_data.remote.util.resultOf
+import dev.alejo.habits_data.sync.HabitSyncWorker
+import dev.alejo.habits_domain.alarm.AlarmHandler
+import dev.alejo.habits_domain.model.Habit
+import dev.alejo.habits_domain.repository.HabitRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.Duration
