@@ -1,7 +1,7 @@
-package dev.alejo.habix.habits.domain.usecase.home
+package dev.alejo.habits_domain.usecase.home
 
-import dev.alejo.habix.habits.domain.model.Habit
-import dev.alejo.habix.habits.domain.repository.HabitRepository
+import dev.alejo.habits_domain.model.Habit
+import dev.alejo.habits_domain.repository.HabitRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
