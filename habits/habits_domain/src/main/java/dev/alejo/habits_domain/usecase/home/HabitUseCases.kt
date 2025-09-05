@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.domain.usecase.home
+package dev.alejo.habits_domain.usecase.home
 
 data class HabitUseCases(
     val getAllHabitsForSelectedDate: GetAllHabitsForSelectedDate,
