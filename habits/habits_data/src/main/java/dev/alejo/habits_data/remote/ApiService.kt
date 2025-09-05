@@ -1,6 +1,6 @@
-package dev.alejo.habix.habits.data.remote
+package dev.alejo.habits_data.remote
 
-import dev.alejo.habix.habits.data.remote.dto.HabitResponse
+import dev.alejo.habits_data.remote.dto.HabitResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
