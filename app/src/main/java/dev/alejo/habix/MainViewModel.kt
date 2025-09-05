@@ -5,9 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.alejo.habix.authentication.domain.usecase.GetUserIdUseCase
-import dev.alejo.habix.authentication.domain.usecase.SignOutUseCase
-import dev.alejo.habix.onboarding.domain.usecase.HasSeenOnboardingUseCase
+import dev.alejo.authentication_domain.usecase.GetUserIdUseCase
+import dev.alejo.authentication_domain.usecase.SignOutUseCase
+import dev.alejo.onboarding_domain.usecase.HasSeenOnboardingUseCase
 import javax.inject.Inject
 
 @HiltViewModel

@@ -8,18 +8,17 @@ plugins {
     alias(libs.plugins.crashlytics)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.kotlin.serialization)
-    //alias(libs.plugins.ksp)
     id("kotlin-kapt")
 }
 
 android {
     namespace = "dev.alejo.habix"
-    compileSdk = 36
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "dev.alejo.habix"
-        minSdk = 30
-        targetSdk = 36
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -50,6 +49,21 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":core:core_data"))
+    implementation(project(":core:core_domain"))
+    implementation(project(":core:core_ui"))
+    implementation(project(":core:core_presentation"))
+    implementation(project(":settings:settings_presentation"))
+    implementation(project(":onboarding:onboarding_data"))
+    implementation(project(":onboarding:onboarding_domain"))
+    implementation(project(":onboarding:onboarding_presentation"))
+    implementation(project(":authentication:authentication_data"))
+    implementation(project(":authentication:authentication_domain"))
+    implementation(project(":authentication:authentication_presentation"))
+    implementation(project(":habits:habits_data"))
+    implementation(project(":habits:habits_domain"))
+    implementation(project(":habits:habits_presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
