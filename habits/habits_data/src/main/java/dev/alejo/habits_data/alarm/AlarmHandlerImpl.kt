@@ -1,12 +1,12 @@
-package dev.alejo.habix.habits.data.alarm
+package dev.alejo.habits_data.alarm
 
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import dev.alejo.habix.habits.data.extension.toTimeStamp
-import dev.alejo.habix.habits.domain.alarm.AlarmHandler
-import dev.alejo.habix.habits.domain.model.Habit
+import dev.alejo.habits_data.extension.toTimeStamp
+import dev.alejo.habits_domain.alarm.AlarmHandler
+import dev.alejo.habits_domain.model.Habit
 import java.time.DayOfWeek
 import java.time.ZonedDateTime
 
