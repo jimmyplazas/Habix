@@ -1,6 +1,6 @@
-package dev.alejo.habix.habits.presentation.home
+package dev.alejo.habits_presentation.home
 
-import dev.alejo.habix.habits.domain.model.Habit
+import dev.alejo.habits_domain.model.Habit
 import java.time.ZonedDateTime
 
 data class HomeState(
