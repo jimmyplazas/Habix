@@ -1,14 +1,14 @@
-package dev.alejo.habix.habits.data.boot
+package dev.alejo.habits_data.boot
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import dagger.hilt.android.AndroidEntryPoint
 import dev.alejo.core_domain.session.SessionManager
-import dev.alejo.habix.habits.data.extension.goAsync
-import dev.alejo.habix.habits.data.local.HomeDao
-import dev.alejo.habix.habits.data.mapper.toDomain
-import dev.alejo.habix.habits.domain.alarm.AlarmHandler
+import dev.alejo.habits_data.extension.goAsync
+import dev.alejo.habits_data.local.HomeDao
+import dev.alejo.habits_data.mapper.toDomain
+import dev.alejo.habits_domain.alarm.AlarmHandler
 import javax.inject.Inject
 
 @AndroidEntryPoint
