@@ -47,7 +47,6 @@ dependencies {
 
     // Dagger Hilt
     implementation(libs.dagger.hilt)
-    implementation(libs.dagger.hilt.navigation)
     kapt(libs.androidx.hilt.compiler)
     kapt(libs.dagger.hilt.compiler)
 
