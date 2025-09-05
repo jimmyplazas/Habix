@@ -1,6 +1,6 @@
-package dev.alejo.habix.habits.domain.alarm
+package dev.alejo.habits_domain.alarm
 
-import dev.alejo.habix.habits.domain.model.Habit
+import dev.alejo.habits_domain.model.Habit
 
 interface AlarmHandler {
     fun setRecurrentAlarm(habit: Habit)
