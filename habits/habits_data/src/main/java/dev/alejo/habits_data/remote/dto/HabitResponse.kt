@@ -1,3 +1,3 @@
-package dev.alejo.habix.habits.data.remote.dto
+package dev.alejo.habits_data.remote.dto
 
 typealias HabitResponse = Map<String, HabitDto>
