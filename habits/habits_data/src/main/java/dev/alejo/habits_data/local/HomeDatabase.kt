@@ -1,11 +1,11 @@
-package dev.alejo.habix.habits.data.local
+package dev.alejo.habits_data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import dev.alejo.habix.habits.data.local.entity.HabitEntity
-import dev.alejo.habix.habits.data.local.entity.HabitSyncEntity
-import dev.alejo.habix.habits.data.local.typeconverter.HomeTypeConverter
+import dev.alejo.habits_data.local.entity.HabitEntity
+import dev.alejo.habits_data.local.entity.HabitSyncEntity
+import dev.alejo.habits_data.local.typeconverter.HomeTypeConverter
 
 @Database(
     entities = [HabitEntity::class, HabitSyncEntity::class],
