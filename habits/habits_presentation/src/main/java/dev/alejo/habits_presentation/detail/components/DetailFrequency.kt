@@ -1,4 +1,4 @@
-package dev.alejo.habix.habits.presentation.detail.components
+package dev.alejo.habits_presentation.detail.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
