@@ -9,9 +9,9 @@ The project is designed as a **learning-oriented but production-ready codebase**
 
 <div align="center">
   <img src="assets/onboarding.jpg" width="220" />
-  <img src="assets/login.png" width="220" />
-  <img src="assets/home.png" width="220" />
-  <img src="assets/detail.png" width="220" />
+  <img src="assets/login.jpg" width="220" />
+  <img src="assets/home.jpg" width="220" />
+  <img src="assets/detail.jpg" width="220" />
 </div>
 
 ---
